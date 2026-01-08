@@ -28,8 +28,13 @@ def fill_missing_values(df, method):
 
     Returns
     -------
-    pd.DataFrame
-        A DataFrame with missing values filled in numeric columns.
+    tuple of (pd.DataFrame, float)
+        result_df : pd.DataFrame
+            A DataFrame with missing values filled in numeric columns.
+        missing_percentage : float
+            The percentage of missing values filled across all numeric
+            columns, calculated as:
+            (number of filled values / total numeric values) * 100.
 
     Raises
     ------
@@ -53,11 +58,13 @@ def fill_missing_values(df, method):
     ...     'income': [50000, None, 52000, None],
     ...     'city': ['A', 'B', 'C', 'D']
     ... })
-    >>> result_df = fill_missing_values(df, method='median')
+    >>> result_df, missing_percentage = fill_missing_values(df, method='median')
     >>> print(result_df)
         age   income city
     0  25.0  50000.0    A
     1  30.0  51000.0    B
     2  28.0  52000.0    C
     3  28.0  51000.0    D
+    >>> print(f"{missing_percentage:.1f}% of values were filled.")
+    37.5% of values were filled.
     """
