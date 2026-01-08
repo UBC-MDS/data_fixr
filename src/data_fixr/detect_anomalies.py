@@ -8,8 +8,8 @@ def detect_anomalies(df, method):
     columns of a pandas DataFrame, whether the data is normally 
     distributed or skewed.
     
-    The function takes in a DataFrame, automatically identifies numeric 
-    columns, and applies the specified method to flag outliers. Each 
+    The function takes in a DataFrame, automatically identifies numeric
+    columns, and applies the specified method to flag outliers. Each
     numeric column is analyzed independently to detect anomalous values.
     
     The z-score method is suitable for normally distributed data but 
@@ -64,5 +64,24 @@ def detect_anomalies(df, method):
         - Non-numeric columns are automatically excluded
         - Missing values (NaN) are not flagged as outliers
     
-    
+    Examples
+    --------
+    >>> import pandas as pd
+    >>> # Create sample data with clear outliers
+    >>> df = pd.DataFrame({
+    ...     'temperature': [20, 21, 22, 19, 98, 23], 
+    ...     'humidity': [45, 50, 48, 52, 49, 200],    
+    ...     'location': ['A', 'B', 'C', 'D', 'E', 'F']
+    ... })
+    >>> result_df, pct = detect_anomalies(df, method='zscore')
+    >>> print(result_df)
+       temperature  humidity  temperature_outlier  humidity_outlier
+    0           20        45                False             False
+    1           21        50                False             False
+    2           22        48                False             False
+    3           19        52                False             False
+    4           98        49                 True             False
+    5           23       200                False              True
+    >>> print(f"{pct:.1f}% of data points are outliers")
+    16.7% of data points are outliers
     """   
