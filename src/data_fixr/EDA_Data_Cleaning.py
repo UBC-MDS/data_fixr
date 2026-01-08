@@ -2,7 +2,7 @@
 import pandas as pd
 
 
-def correlation_report(df, method: str = "pearson"):
+def correlation_report(df: pd.DataFrame, method: str = "pearson"):
     """
     Compute pairwise correlations between numeric columns of a DataFrame.
 
@@ -12,9 +12,9 @@ def correlation_report(df, method: str = "pearson"):
 
     Parameters
     ----------
-    df:
+    df: pandas.DataFrame
         Input pandas DataFrame containing the data to analyze.
-    method:
+    method: str, default: "pearson"
         Correlation method to use. Supported values are:
         - "pearson": linear correlation.
         - "spearman": rank-based correlation.
