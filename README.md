@@ -27,6 +27,12 @@ To use data_fixr in your code:
 >>> data_fixr.hello_world()
 ```
 
+## Contributors
+- Apoorva Srivastava
+- Chikire Aku-Ibe
+- Nour Shawky
+- Zain Nofal
+
 ## Copyright
 
 - Copyright © 2026 Nour Shawky, Apoorva Srivastava, Zain Nofal, Chikire Aku-Ibe
