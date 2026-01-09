@@ -1,3 +1,4 @@
+import pandas as pd
 def detect_anomalies(df, method):
     """
     This function flags outliers in numeric columns using either the
@@ -42,7 +43,9 @@ def detect_anomalies(df, method):
     Raises
     ------
     ValueError
-        If method is not 'zscore' or 'iqr'
+        If method is not 'zscore' or 'iqr', or if any numeric column
+        contains fewer than 3 data points, or if any numeric column
+        contains NaN values.
     TypeError
         If df is not a pandas DataFrame or contains no numeric columns.
 
