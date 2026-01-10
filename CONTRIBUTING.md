@@ -1,7 +1,18 @@
 # Contributing
 
-Contributions of all kinds are welcome here, and they are greatly appreciated!
+Contributions of all kinds are welcome for the data_fixr package and are greatly appreciated!
 Every little bit helps, and credit will always be given.
+
+## Branching and Workflow
+
+This project follows a Github Flow Workflow.
+
+- The main branch always contains stable, production-ready code
+- Direct commits to the 'main' branch are prohibited.
+- All work should be conducted on short-lived branches created from 'main'.
+- Branches should be named using appropriate prefixes such as 'feat-' or 'fix-'.
+- Changes must be proposed via pull request to the main branch.
+- Each Pull request must be reviewed by at least one other team member and granted approval before merging. 
 
 ## Example Contributions
 
@@ -15,7 +26,7 @@ You can contribute in many ways, for example:
 
 ### Report Bugs
 
-Report bugs at https://github.com/nourshawk/data_fixr/issues.
+Report bugs at https://github.com/UBC-MDS/data_fixr/issues.
 
 **If you are reporting a bug, please follow the template guidelines. The more
 detailed your report, the easier and thus faster we can help you.**
@@ -42,13 +53,13 @@ happy for any support that they can get.
 data_fixr could always use more documentation, whether as
 part of the official documentation, in docstrings, or even on the web in blog
 posts, articles, and such. Just
-[open an issue](https://github.com/nourshawk/data_fixr/issues)
+[open an issue](https://github.com/UBC-MDS/data_fixr/issues)
 to let us know what you will be working on so that we can provide you with guidance.
 
 ### Submit Feedback
 
 The best way to send feedback is to file an issue at
-https://github.com/nourshawk/data_fixr/issues. If your feedback fits the format of one of
+https://github.com/UBC-MDS/data_fixr/issues. If your feedback fits the format of one of
 the issue templates, please use that. Remember that this is a volunteer-driven
 project and everybody has limited time.
 
@@ -57,7 +68,7 @@ project and everybody has limited time.
 Ready to contribute? Here's how to set up data_fixr for
 local development.
 
-1. Fork the https://github.com/nourshawk/data_fixr
+1. Fork the https://github.com/UBC-MDS/data_fixr
    repository on GitHub.
 2. Clone your fork locally (*if you want to work locally*)
 
@@ -77,7 +88,7 @@ local development.
     Now you can make your changes locally.
 
 5. When you're done making changes, apply the quality assurance tools and check
-   that your changes pass our test suite. This is all included with tox
+   that your changes pass our test suite. This is all included with Hatch.
 
     ```shell
     hatch run test:run
@@ -95,7 +106,7 @@ local development.
 7. Open the link displayed in the message when pushing your new branch in order
    to submit a pull request.
 
-### Pull Request Guidelines
+## Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
 
@@ -104,3 +115,7 @@ Before you submit a pull request, check that it meets these guidelines:
    new functionality into a function with a docstring.
 3. Your pull request will automatically be checked by the full test suite.
    It needs to pass all of them before it can be considered for merging.
+
+## Code of Conduct
+
+Please note that the data_fixr package is released with a [Code of Conduct](https://github.com/UBC-MDS/data_fixr/blob/main/CODE_OF_CONDUCT.md). By contributing to this project you agree to abide by its terms.
