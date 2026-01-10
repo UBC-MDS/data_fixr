@@ -8,7 +8,13 @@
 *TODO: the above badges that indicate python version and package version will only work if your package is on PyPI.
 If you don't plan to publish to PyPI, you can remove them.*
 
-data_fixr is a project that (describe what it does here).
+## Package Summary
+
+data_fixr is a lightweight Python package designed to support exploratory data analysis and early-stage data cleaning for tabular datasets. The package provides standardized, machine-readable diagnostics and cleaning utilities that help users quickly assess data quality, identify common issues, and prepare datasets for downstream analysis or machine learning workflows. Rather than generating plots or reports, data_fixr focuses on returning clean, structured outputs that can be easily tested, logged, or integrated into automated pipelines.
+
+## Functions
+- **Correlation report**
+Computes pairwise correlations between numeric columns in a pandas DataFrame and returns a long-format diagnostic table. The output summarizes the strength and direction of relationships between features in a standardized, machine-readable format suitable for exploratory analysis and preprocessing workflows.
 
 ## Get started
 
@@ -26,6 +32,12 @@ To use data_fixr in your code:
 >>> import data_fixr
 >>> data_fixr.hello_world()
 ```
+
+## Contributors
+- Apoorva Srivastava
+- Chikire Aku-Ibe
+- Nour Shawky
+- Zain Nofal
 
 ## Copyright
 
