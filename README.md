@@ -13,16 +13,16 @@ If you don't plan to publish to PyPI, you can remove them.*
 data_fixr is a lightweight Python package designed to support exploratory data analysis and early-stage data cleaning for tabular datasets. The package provides standardized, machine-readable diagnostics and cleaning utilities that help users quickly assess data quality, identify common issues, and prepare datasets for downstream analysis or machine learning workflows. Rather than generating plots or reports, data_fixr focuses on returning clean, structured outputs that can be easily tested, logged, or integrated into automated pipelines.
 
 ## Functions
-- **Correlation report**
+- **Correlation report:**
 Computes pairwise correlations between numeric columns in a pandas DataFrame and returns a long-format diagnostic table. The output summarizes the strength and direction of relationships between features in a standardized, machine-readable format suitable for exploratory analysis and preprocessing workflows.
 
-- **Remove Duplicates**
+- **Remove Duplicates:**
 Identifies and removes duplicate rows for a given dataset. Users can specify the retention strategy for handling duplicates and choose whether duplicates are detected using all columns or a specified subset. Optionally, the function can return a useful summary report describing the number of duplicate rows detected and removed.
 
-- **Detect Anomalies**
+- **Detect Anomalies:**
 This function identifies and flags outliers in numeric columns of a pandas DataFrame using either the Z-score method (for normally distributed data) or the IQR (Interquartile Range) method (for skewed data). It returns a DataFrame with the numeric columns and boolean outlier flags for each numeric column, as well as the overall percentage of outliers detected.
 
-- **Filling Missing Values**
+- **Fill Missing Values:**
 This function fills missing values (NaN) in both numeric and categorical (non-numeric) columns of a pandas DataFrame. Numeric columns are filled using a user-specified method (mean, median, or mode), while categorical (non-numeric) columns are automatically filled using mode imputation. The function returns a DataFrame with missing values filled and the overall percentage of missing values that were imputed across all columns.
 
 
