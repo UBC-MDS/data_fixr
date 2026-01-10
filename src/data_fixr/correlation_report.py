@@ -1,8 +1,5 @@
 
-import pandas as pd
-
-
-def correlation_report(df: pd.DataFrame, method: str = "pearson"):
+def correlation_report(df, method: str = "pearson"):
     """
     Compute pairwise correlations between numeric columns of a DataFrame.
 
