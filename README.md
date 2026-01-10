@@ -42,13 +42,14 @@ You can install this package into your preferred Python environment using pip:
 $ pip install data_fixr
 ```
 
-TODO: Add a brief example of how to use the package to this section
-
 To use data_fixr in your code:
 
 ```python
 >>> import data_fixr
->>> data_fixr.hello_world()
+>>> data_fixr.correlation_report(df)
+>>> data_fixr.remove_duplicates(df)
+>>> data_fixr.fill_missing_values(df, method = "median")
+>>> data_fixr.detect_anomalies(df, method = "iqr")
 ```
 
 ## Contributors
