@@ -67,15 +67,15 @@ def fill_missing_values(df, method):
     >>> df = pd.DataFrame({
     ...     'age': [25, 30, None, 28],
     ...     'income': [50000, None, 52000, None],
-    ...     'city': ['A', 'B', 'C', 'D']
+    ...     'city': ['A', 'B', None, 'B']
     ... })
     >>> result_df, missing_percentage = fill_missing_values(df, method='median')
     >>> print(result_df)
         age   income city
     0  25.0  50000.0    A
     1  30.0  51000.0    B
-    2  28.0  52000.0    C
-    3  28.0  51000.0    D
+    2  28.0  52000.0    B
+    3  28.0  51000.0    B
     >>> print(f"{missing_percentage:.1f}% of values were filled.")
-    37.5% of values were filled.
+    33.3% of values were filled.
     """
