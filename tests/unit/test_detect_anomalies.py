@@ -79,7 +79,7 @@ def test_mixed_dataframe(test_data):
     assert result_df.loc[4, 'temperature_outlier'] == True
     assert result_df.loc[5, 'humidity_outlier'] == True
     
- # Edge Cases and Abnormal/Error Cases
+ # Edge Cases
  # Empty DataFrame, no numeric columns, DataFrames with NaN values or less than 3 data points.   
 def test_empty_dataframe():
     """Test that empty DataFrame raises appropriate error."""
@@ -127,6 +127,15 @@ def test_dataframe_with_nan_values():
         detect_anomalies(df, method='zscore')
     with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
         detect_anomalies(non_df_input, method='iqr')
+        
+def test_no_outliers_detected():
+    """Test case where no outliers exist."""
+    df = pd.DataFrame({
+        'values': [10, 11, 12, 13, 14, 15]  # No extreme values
+    })
+    result_df, pct = detect_anomalies(df, method='zscore')
+    assert (result_df['values_outlier'] == False).all()
+    assert pct == 0.0
         
 # Abnormal/Error Cases: Invalid method parameter
 def test_invalid_method_parameter(test_data):
