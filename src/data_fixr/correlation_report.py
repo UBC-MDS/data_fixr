@@ -83,7 +83,6 @@ def correlation_report(df, method: str = "pearson"):
             })
 
 
-
     result = pd.DataFrame.from_records(records,columns=["feature_1", "feature_2", "correlation", "abs_correlation"],)
 
     return result
