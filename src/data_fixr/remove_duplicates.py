@@ -82,3 +82,31 @@ def remove_duplicates(df, cols=None, keep='first', report=False):
     'rows_removed': 1,
     'subset_used': ['id']}
     """
+
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("df must be a pandas DataFrame.")
+    
+    if keep not in {"first", "last", False}:
+        raise ValueError("keep must be one of {'first', 'last', False}.")
+    
+    total_rows = len(df)
+
+    duplicated_mask = df.duplicated(subset=cols, keep=keep)
+    duplicate_rows = duplicated_mask.sum()
+
+    cleaned_df = df.loc[~duplicated_mask].copy()
+    rows_removed = total_rows - len(cleaned_df)
+
+
+    #code for generating summary report
+    if report:
+        summary = {
+            "total_rows": total_rows,
+            "duplicate_rows": int(duplicate_rows),
+            "rows_removed": int(rows_removed),
+            "strategy": keep,
+            "cols_used": cols,
+        }
+        return cleaned_df, summary
+
+    return cleaned_df
