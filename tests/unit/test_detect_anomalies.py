@@ -49,16 +49,20 @@ def test_zscore_detection_method(test_data):
     assert 0 <= pct <= 100 # percentage should be between 0 and 100
     
 def test_iqr_detection_method(skewed_data):
-    """Test IQR anomaly detection method."""
+    """Test IQR anomaly detection method on skewed data."""
     result_df, pct = detect_anomalies(skewed_data, method='iqr')
     assert isinstance(result_df, pd.DataFrame)
     assert isinstance(pct, float)
-    assert 'temperature_outlier' in result_df.columns
-    assert 'humidity_outlier' in result_df.columns
-    assert result_df.loc[4, 'temperature_outlier'] == True  # outliers are correctly identified
-    assert result_df.loc[5, 'humidity_outlier'] == True     # outliers are correctly identified
-    assert result_df.loc[0, 'temperature_outlier'] == False # checks that normal values are not marked as outliers
-    assert result_df.loc[1, 'humidity_outlier'] == False    # checks that normal values are not marked as outliers 
+    # Check correct column names from skewed_data fixture
+    assert 'income_outlier' in result_df.columns 
+    assert 'response_time_outlier' in result_df.columns 
+    assert 'age_outlier' in result_df.columns 
+    # Check extreme outliers are flagged (index 9 has all outliers)
+    assert result_df.loc[9, 'income_outlier'] == True  # outliers are correctly identified
+    assert result_df.loc[9, 'response_time_outlier'] == True  # outliers are correctly identified
+    assert result_df.loc[9, 'age_outlier'] == True  # outliers are correctly identified
+    # Check normal values are not flagged
+    assert result_df.loc[0, 'income_outlier'] == False
     assert 0 <= pct <= 100  # percentage should be between 0 and 100
  
 def test_mixed_dataframe(test_data):
@@ -86,24 +90,18 @@ def test_empty_dataframe():
     df = pd.DataFrame()  # Completely empty
     with pytest.raises(TypeError, match="empty DataFrame"):
         detect_anomalies(df, method='zscore')
-   with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
-        detect_anomalies(non_df_input, method='iqr')
 
-def test_numeric_columns():
-    """Test DataFrame with columns but less than 3 data points raises error."""
+def test_empty_numeric_columns():
+    """Test DataFrame with columns but zero rows raises error."""
     df = pd.DataFrame({'temperature': [], 'humidity': []})
-    with pytest.raises(ValueError, match=" No data points found for numeric columns"):
+    with pytest.raises(ValueError, match="No data points found for numeric columns"):
         detect_anomalies(df, method='zscore')
-    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
-        detect_anomalies(non_df_input, method='iqr')
         
-def test_insufficent_datapoints():
-    """Test DataFrame with columns but no rows raises error."""
-    df_first_two = df.iloc[:2]
-    with pytest.raises(ValueError, match=" Not enough data points for numeric columns"):
+def test_insufficient_datapoints(test_data):
+    """Test DataFrame with fewer than 3 data points raises error."""
+    df_first_two = test_data.iloc[:2]  # Only 2 rows
+    with pytest.raises(ValueError, match="Not enough data points for numeric columns"):
         detect_anomalies(df_first_two, method='zscore')
-    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
-        detect_anomalies(non_df_input, method='iqr')
         
 
 def test_dataframe_with_only_non_numeric_columns():
@@ -114,8 +112,6 @@ def test_dataframe_with_only_non_numeric_columns():
     })
     with pytest.raises(TypeError, match="no numeric columns found"):
         detect_anomalies(df, method='zscore')
-    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
-        detect_anomalies(non_df_input, method='iqr')
         
 def test_dataframe_with_nan_values():
     """Test DataFrame with NaN values in numeric columns raises error."""
@@ -125,17 +121,46 @@ def test_dataframe_with_nan_values():
     })
     with pytest.raises(ValueError, match="contains NaN values"):
         detect_anomalies(df, method='zscore')
-    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
-        detect_anomalies(non_df_input, method='iqr')
         
-def test_no_outliers_detected():
-    """Test case where no outliers exist."""
+def test_no_outliers_detected_zscore():
+    """Test case where no outliers exist using Z-score method."""
     df = pd.DataFrame({
         'values': [10, 11, 12, 13, 14, 15]  # No extreme values
     })
     result_df, pct = detect_anomalies(df, method='zscore')
     assert (result_df['values_outlier'] == False).all()
     assert pct == 0.0
+
+def test_no_outliers_detected_iqr():
+    """Test case where no outliers exist using IQR method."""
+    df = pd.DataFrame({
+        'values': [10, 11, 12, 13, 14, 15]  # No extreme values
+    })
+    result_df, pct = detect_anomalies(df, method='iqr')
+    assert (result_df['values_outlier'] == False).all()
+    assert pct == 0.0
+
+def test_outlier_percentage_calculation(test_data):
+    """Verify percentage calculation is accurate."""
+    result_df, pct = detect_anomalies(test_data, method='zscore')
+    total_outliers = result_df['temperature_outlier'].sum() + result_df['humidity_outlier'].sum()
+    total_values = len(test_data) * 2  # 6 rows × 2 numeric columns = 12 values
+    expected_pct = (total_outliers / total_values) * 100
+    assert abs(pct - expected_pct) < 0.01
+
+def test_columns_analyzed_separately():
+    """Test that each numeric column is analyzed independently."""
+    df = pd.DataFrame({
+        'col1': [1, 2, 3, 100],     # Outlier at index 3
+        'col2': [10, 20, 200, 40]   # Outlier at index 2
+    })
+    result_df, pct = detect_anomalies(df, method='iqr')
+    # Verify outlier indices
+    assert result_df.loc[3, 'col1_outlier'] == True
+    assert result_df.loc[2, 'col2_outlier'] == True
+    # Verify non-outlier indices
+    assert result_df.loc[3, 'col2_outlier'] == False  # col2 index 3 is normal
+    assert result_df.loc[2, 'col1_outlier'] == False  # col1 index 2 is normal
         
 # Abnormal/Error Cases: Invalid method parameter
 def test_invalid_method_parameter(test_data):
@@ -151,10 +176,3 @@ def test_non_dataframe_input():
     with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
         detect_anomalies(non_df_input, method='iqr')
         
-def invalid_output_path():
-    """Test that invalid output path raises appropriate error."""
-    invalid_path = "/invalid_path/output.csv"
-    with pytest.raises(OSError, match="Invalid output path"):
-        detect_anomalies(df, method='zscore', output_path=invalid_path)    
-    with pytest.raises(OSError, match="Invalid output path"):
-        detect_anomalies(df, method='iqr', output_path=invalid_path)
