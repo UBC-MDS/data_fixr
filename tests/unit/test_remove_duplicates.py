@@ -20,6 +20,10 @@ def test_remove_duplicates_basic():
     assert result["id"].tolist() == [1, 2]
 
 def test_remove_duplicates_subset_keep_last():
+    """
+    Checking that last instance of duplicate is returned, when
+    optional parameter keep is 'specified'.
+    """
     df = pd.DataFrame({
         "id": [1, 1, 2],
         "value": ["A", "B", "C"]
@@ -30,6 +34,10 @@ def test_remove_duplicates_subset_keep_last():
     assert result.iloc[0]["value"] == "B"
 
 def test_remove_duplicates_with_report():
+    """
+    Function checks that report is returned when optional 
+    parameter report is specified with value = True
+    """
     df = pd.DataFrame({
         "id": [1, 1, 2]
     })
