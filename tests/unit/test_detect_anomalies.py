@@ -86,21 +86,24 @@ def test_empty_dataframe():
     df = pd.DataFrame()  # Completely empty
     with pytest.raises(TypeError, match="empty DataFrame"):
         detect_anomalies(df, method='zscore')
-        detect_anomalies(df, method='iqr')
+   with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
+        detect_anomalies(non_df_input, method='iqr')
 
 def test_numeric_columns():
     """Test DataFrame with columns but less than 3 data points raises error."""
     df = pd.DataFrame({'temperature': [], 'humidity': []})
     with pytest.raises(ValueError, match=" No data points found for numeric columns"):
         detect_anomalies(df, method='zscore')
-        detect_anomalies(df_first_two, method='iqr')
-
+    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
+        detect_anomalies(non_df_input, method='iqr')
+        
 def test_insufficent_datapoints():
     """Test DataFrame with columns but no rows raises error."""
     df_first_two = df.iloc[:2]
     with pytest.raises(ValueError, match=" Not enough data points for numeric columns"):
         detect_anomalies(df_first_two, method='zscore')
-        detect_anomalies(df_first_two, method='iqr')
+    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
+        detect_anomalies(non_df_input, method='iqr')
         
 
 def test_dataframe_with_only_non_numeric_columns():
@@ -111,7 +114,8 @@ def test_dataframe_with_only_non_numeric_columns():
     })
     with pytest.raises(TypeError, match="no numeric columns found"):
         detect_anomalies(df, method='zscore')
-        detect_anomalies(df_first_two, method='iqr')
+    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
+        detect_anomalies(non_df_input, method='iqr')
         
 def test_dataframe_with_nan_values():
     """Test DataFrame with NaN values in numeric columns raises error."""
@@ -121,4 +125,27 @@ def test_dataframe_with_nan_values():
     })
     with pytest.raises(ValueError, match="contains NaN values"):
         detect_anomalies(df, method='zscore')
-        detect_anomalies(df, method='iqr')  
+    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
+        detect_anomalies(non_df_input, method='iqr')
+        
+# Abnormal/Error Cases: Invalid method parameter
+def test_invalid_method_parameter(test_data):
+    """Test that invalid method parameter raises ValueError."""
+    with pytest.raises(ValueError, match="method must be either 'zscore' or 'iqr'"):
+        detect_anomalies(test_data, method='invalid_method')    
+
+def test_non_dataframe_input():
+    """Test that non-DataFrame input raises TypeError."""
+    non_df_input = [1, 2, 3, 4, 5]
+    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
+        detect_anomalies(non_df_input, method='zscore')    
+    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
+        detect_anomalies(non_df_input, method='iqr')
+        
+def invalid_output_path():
+    """Test that invalid output path raises appropriate error."""
+    invalid_path = "/invalid_path/output.csv"
+    with pytest.raises(OSError, match="Invalid output path"):
+        detect_anomalies(df, method='zscore', output_path=invalid_path)    
+    with pytest.raises(OSError, match="Invalid output path"):
+        detect_anomalies(df, method='iqr', output_path=invalid_path)
