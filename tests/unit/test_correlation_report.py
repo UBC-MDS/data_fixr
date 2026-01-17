@@ -15,7 +15,8 @@ when given invalid input.
 
 import pandas as pd
 import pytest
-from data_fixr.correlation_report import correlation_report
+from data_fixr import correlation_report
+#from data_fixr.correlation_report import correlation_report
 
 
 
