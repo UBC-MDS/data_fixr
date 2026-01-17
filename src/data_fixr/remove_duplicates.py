@@ -82,7 +82,7 @@ def remove_duplicates(df, cols=None, keep='first', report=False):
     {'total_rows': 4,
     'duplicate_rows': 1,
     'rows_removed': 1,
-    'subset_used': ['id']}
+    'cols_used': ['id']}
     """
 
     if not isinstance(df, pd.DataFrame):
