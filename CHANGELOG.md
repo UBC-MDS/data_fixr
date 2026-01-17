@@ -9,24 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Implementation of `correlation_report()` for computing pairwise correlations (#30)
-- Implementation of `detect_anomalies()` for identifying outliers in data (#32)
-- Implementation of `remove_duplicates()` for duplicate row detection and removal (#28)
-- Implementation of `fill_missing_values()` for handling missing data (#27)
-- Unit tests for `correlation_report()` (#31)
-- Unit tests for `detect_anomalies()` (#33)
-- Unit tests for `remove_duplicates()` (#29)
-- Unit tests for `fill_missing_values()` (#26)
+- Implementation of `correlation_report()` for computing pairwise correlations (#44)
+- Implementation of `detect_anomalies()` for identifying outliers in data (#42)
+- Implementation of `remove_duplicates()` for duplicate row detection and removal (#45)
+- Implementation of `missing_values()` for handling missing data (#49)
+- Unit tests for `correlation_report()` (#44)
+- Unit tests for `detect_anomalies()` (#42)
+- Unit tests for `remove_duplicates()` (#45)
+- Unit tests for `missing_values()` (#49)
 - Dependencies added to `pyproject.toml` (#34)
 - Environment configuration file `environment.yml` (#38)
 
 ### Fixed
 
-- Updated README.md installation instructions for clarity (#36)
+- Updated README.md installation instructions for clarity (#51)
 
 ### Changed
 
-- Updated CHANGELOG.md to reflect Milestone 1 and 2 progress (#37)
+- Updated CHANGELOG.md to reflect Milestone 1 and 2 progress (#39)
 
 ## [0.0.1](https://github.com/UBC-MDS/data_fixr/releases/tag/0.0.1) - 2026-01-10
 
@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Function specifications and documentation for `correlation_report()` (#15)
 - Function specifications and documentation for `detect_anomalies()` (#16)
 - Function specifications and documentation for `remove_duplicates()` (#21)
-- Function specifications and documentation for `fill_missing_values()` (#22)
+- Function specifications and documentation for `missing_values()` (#22)
 - Support for handling missing values in categorical columns (#17)
 
 ### Changed
