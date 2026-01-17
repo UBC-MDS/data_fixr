@@ -93,6 +93,9 @@ def missing_values(df, method):
 
     result_df = df.copy()
 
+    if df.empty:  # Empty dataframe
+        return result_df, 0.0
+
     total_missing_before = result_df.isna().sum().sum()
     total_values = result_df.size
 
@@ -110,8 +113,8 @@ def missing_values(df, method):
         elif method == "median":
             fill_value = result_df[col].median()
         elif method == "mode":
-            fill_value = result_df[col].mode()
-            fill_value = fill_value[0] if not fill_value.empty else np.nan
+            mode_result = result_df[col].mode()
+            fill_value = mode_result.iloc[0] if len(mode_result) > 0 else np.nan
 
         result_df[col] = result_df[col].fillna(fill_value)
 
@@ -120,8 +123,8 @@ def missing_values(df, method):
         if result_df[col].isna().all():
             continue  # Leave all-NaN columns unchanged
 
-        fill_value = result_df[col].mode()
-        fill_value = fill_value[0] if not fill_value.empty else np.nan
+        mode_result = result_df[col].mode()
+        fill_value = mode_result.iloc[0] if len(mode_result) > 0 else np.nan
         result_df[col] = result_df[col].fillna(fill_value)
 
     # Compute filled percentage
