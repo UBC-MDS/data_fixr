@@ -88,7 +88,7 @@ def test_mixed_dataframe(test_data):
 def test_empty_dataframe():
     """Test that empty DataFrame raises appropriate error."""
     df = pd.DataFrame()  # Completely empty
-    with pytest.raises(TypeError, match="empty DataFrame"):
+    with pytest.raises(ValueError, match="empty DataFrame"):
         detect_anomalies(df, method='zscore')
 
 def test_empty_numeric_columns():

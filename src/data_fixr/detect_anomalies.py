@@ -95,7 +95,7 @@ def detect_anomalies(df, method='zscore'):
     
     # Check for completely empty DataFrame (no columns, no rows)
     if df.empty and len(df.columns) == 0:
-        raise TypeError("empty DataFrame")
+        raise ValueError("empty DataFrame")
     
     if method not in ['zscore', 'iqr']:
         raise ValueError("method must be either 'zscore' or 'iqr'")
