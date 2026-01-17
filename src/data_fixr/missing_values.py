@@ -70,9 +70,9 @@ def missing_values(df, method):
     --------
     >>> import pandas as pd
     >>> df = pd.DataFrame({
-    ...     'age': [25, 30, None, 28],
-    ...     'income': [50000, None, 52000, None],
-    ...     'city': ['A', 'B', None, 'B']
+    ...     'age': [25, 30, np.nan, 28],
+    ...     'income': [50000, np.nan, 52000, np.nan],
+    ...     'city': ['A', 'B', np.nan, 'B']
     ... })
     >>> result_df, filled_percentage = missing_values(df, method='median')
     >>> print(result_df)
@@ -84,3 +84,49 @@ def missing_values(df, method):
     >>> print(f"{filled_percentage:.1f}% of values were filled.")
     33.3% of values were filled.
     """
+
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Input must be a pandas DataFrame.")
+
+    if method not in ["mean", "median", "mode"]:
+        raise ValueError("Method must be one of: 'mean', 'median', 'mode'.")
+
+    result_df = df.copy()
+
+    total_missing_before = result_df.isna().sum().sum()
+    total_values = result_df.size
+
+    # Separate numeric and non-numeric columns
+    numeric_cols = result_df.select_dtypes(include=[np.number]).columns
+    categorical_cols = result_df.select_dtypes(exclude=[np.number]).columns
+
+    # Impute numeric columns
+    for col in numeric_cols:
+        if result_df[col].isna().all():
+            continue  # Leave all-NaN columns unchanged
+
+        if method == "mean":
+            fill_value = result_df[col].mean()
+        elif method == "median":
+            fill_value = result_df[col].median()
+        elif method == "mode":
+            fill_value = result_df[col].mode()
+            fill_value = fill_value[0] if not fill_value.empty else np.nan
+
+        result_df[col].fillna(fill_value, inplace=True)
+
+    # Impute categorical columns using mode
+    for col in categorical_cols:
+        if result_df[col].isna().all():
+            continue  # Leave all-NaN columns unchanged
+
+        fill_value = result_df[col].mode()
+        fill_value = fill_value[0] if not fill_value.empty else np.nan
+        result_df[col].fillna(fill_value, inplace=True)
+
+    # Compute filled percentage
+    total_missing_after = result_df.isna().sum().sum()
+    filled_values = total_missing_before - total_missing_after
+    filled_percentage = (filled_values / total_values) * 100
+
+    return result_df, filled_percentage
