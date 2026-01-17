@@ -6,14 +6,14 @@ covering expected use cases, edge cases, and error handling scenarios.
 Test Categories
 ---------------
 - Simple/Expected Use Cases: Normal DataFrame inputs with numerical columns
-- Edge Cases: Empty DataFrames, no numeric column, DataFrames with NaN values 
-or less than 3 data points.
-- Abnormal/Error Cases: Invalid output paths, missing required columns
+- Edge Cases: Empty DataFrames, no numeric columns, DataFrames with NaN values 
+  or less than 3 data points
+- Error Cases: Invalid method parameter, non-DataFrame input
 
 """
 import pytest
 import pandas as pd
-from data_fixr.detect_anomalies import detect_anomalies
+from data_fixr import detect_anomalies
 
 @pytest.fixture
 def test_data():
@@ -33,8 +33,8 @@ def skewed_data():
         'age': [22, 25, 27, 30, 32, 35, 38, 40, 42, 95]  # Mostly normal with one outlier
     })
     return df
-  
- # Simple/Expected Use Cases   
+
+# Simple/Expected Use Cases
 def test_zscore_detection_method(test_data):
     """Test z-score anomaly detection method."""
     result_df, pct = detect_anomalies(test_data, method='zscore')
@@ -42,10 +42,10 @@ def test_zscore_detection_method(test_data):
     assert isinstance(pct, float)
     assert 'temperature_outlier' in result_df.columns
     assert 'humidity_outlier' in result_df.columns
-    assert result_df.loc[4, 'temperature_outlier'] == True  # outliers are correctly identified
-    assert result_df.loc[5, 'humidity_outlier'] == True     # outliers are correctly identified
-    assert result_df.loc[0, 'temperature_outlier'] == False # checks that normal values are not marked as outliers
-    assert result_df.loc[1, 'humidity_outlier'] == False    # checks that normal values are not marked as outliers 
+    assert result_df.loc[4, 'temperature_outlier']  # outliers are correctly identified
+    assert result_df.loc[5, 'humidity_outlier']     # outliers are correctly identified
+    assert not result_df.loc[0, 'temperature_outlier']  # checks that normal values are not marked as outliers
+    assert not result_df.loc[1, 'humidity_outlier']     # checks that normal values are not marked as outliers 
     assert 0 <= pct <= 100 # percentage should be between 0 and 100
     
 def test_iqr_detection_method(skewed_data):
@@ -58,11 +58,11 @@ def test_iqr_detection_method(skewed_data):
     assert 'response_time_outlier' in result_df.columns 
     assert 'age_outlier' in result_df.columns 
     # Check extreme outliers are flagged (index 9 has all outliers)
-    assert result_df.loc[9, 'income_outlier'] == True  # outliers are correctly identified
-    assert result_df.loc[9, 'response_time_outlier'] == True  # outliers are correctly identified
-    assert result_df.loc[9, 'age_outlier'] == True  # outliers are correctly identified
+    assert result_df.loc[9, 'income_outlier']  # outliers are correctly identified
+    assert result_df.loc[9, 'response_time_outlier']  # outliers are correctly identified
+    assert result_df.loc[9, 'age_outlier']  # outliers are correctly identified
     # Check normal values are not flagged
-    assert result_df.loc[0, 'income_outlier'] == False
+    assert not result_df.loc[0, 'income_outlier']
     assert 0 <= pct <= 100  # percentage should be between 0 and 100
  
 def test_mixed_dataframe(test_data):
@@ -80,11 +80,11 @@ def test_mixed_dataframe(test_data):
     assert 'city_outlier' not in result_df.columns
     assert 'location' not in result_df.columns
     assert 'city' not in result_df.columns
-    assert result_df.loc[4, 'temperature_outlier'] == True
-    assert result_df.loc[5, 'humidity_outlier'] == True
-    
- # Edge Cases
- # Empty DataFrame, no numeric columns, DataFrames with NaN values or less than 3 data points.   
+    assert result_df.loc[4, 'temperature_outlier']
+    assert result_df.loc[5, 'humidity_outlier']
+
+# Edge Cases
+# Empty DataFrame, no numeric columns, DataFrames with NaN values or less than 3 data points.
 def test_empty_dataframe():
     """Test that empty DataFrame raises appropriate error."""
     df = pd.DataFrame()  # Completely empty
@@ -146,7 +146,7 @@ def test_outlier_percentage_calculation(test_data):
     total_outliers = result_df['temperature_outlier'].sum() + result_df['humidity_outlier'].sum()
     total_values = len(test_data) * 2  # 6 rows × 2 numeric columns = 12 values
     expected_pct = (total_outliers / total_values) * 100
-    assert abs(pct - expected_pct) < 0.01
+    assert pct == pytest.approx(expected_pct, abs=0.01)
 
 def test_columns_analyzed_separately():
     """Test that each numeric column is analyzed independently."""
@@ -156,11 +156,11 @@ def test_columns_analyzed_separately():
     })
     result_df, pct = detect_anomalies(df, method='iqr')
     # Verify outlier indices
-    assert result_df.loc[3, 'col1_outlier'] == True
-    assert result_df.loc[2, 'col2_outlier'] == True
+    assert result_df.loc[3, 'col1_outlier']
+    assert result_df.loc[2, 'col2_outlier']
     # Verify non-outlier indices
-    assert result_df.loc[3, 'col2_outlier'] == False  # col2 index 3 is normal
-    assert result_df.loc[2, 'col1_outlier'] == False  # col1 index 2 is normal
+    assert not result_df.loc[3, 'col2_outlier']  # col2 index 3 is normal
+    assert not result_df.loc[2, 'col1_outlier']  # col1 index 2 is normal
         
 # Abnormal/Error Cases: Invalid method parameter
 def test_invalid_method_parameter(test_data):
@@ -168,11 +168,17 @@ def test_invalid_method_parameter(test_data):
     with pytest.raises(ValueError, match="method must be either 'zscore' or 'iqr'"):
         detect_anomalies(test_data, method='invalid_method')    
 
-def test_non_dataframe_input():
+@pytest.mark.parametrize("method", ['zscore', 'iqr'])
+def test_non_dataframe_input(method):
     """Test that non-DataFrame input raises TypeError."""
     non_df_input = [1, 2, 3, 4, 5]
     with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
-        detect_anomalies(non_df_input, method='zscore')    
-    with pytest.raises(TypeError, match="Input must be a pandas DataFrame"):
-        detect_anomalies(non_df_input, method='iqr')
+        detect_anomalies(non_df_input, method=method)
+
+def test_default_method_is_zscore(test_data):
+    """Test that zscore is the default method."""
+    result_default, pct_default = detect_anomalies(test_data)
+    result_zscore, pct_zscore = detect_anomalies(test_data, method='zscore')
+    pd.testing.assert_frame_equal(result_default, result_zscore)
+    assert pct_default == pct_zscore
         
