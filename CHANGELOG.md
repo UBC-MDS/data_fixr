@@ -17,12 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unit tests for `detect_anomalies()` (#42)
 - Unit tests for `remove_duplicates()` (#45)
 - Unit tests for `missing_values()` (#49)
-- Dependencies added to `pyproject.toml` (#34)
-- Environment configuration file `environment.yml` (#38)
+- Dependencies added to `pyproject.toml` (#42)
+- Environment configuration file `environment.yml` (#52)
 
 ### Fixed
 
-- Updated README.md installation instructions for clarity (#51)
+- Updated README.md installation instructions for clarity (#51, #52)
 
 ### Changed
 
