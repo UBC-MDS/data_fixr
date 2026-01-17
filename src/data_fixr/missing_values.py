@@ -38,10 +38,13 @@ def missing_values(df, method):
         result_df : pd.DataFrame
             A DataFrame with missing values filled in both numeric and
             categorical (non-numeric) columns.
-        missing_percentage : float
-            The percentage of missing values filled across the entire
-            DataFrame, calculated as:
-            (number of filled values / total values) * 100.
+        filled_percentage : float
+            The percentage of total DataFrame values that were originally
+            missing and have been filled, calculated as:
+            (number of filled values / number of total values) * 100.
+
+            Columns containing only NaN values are left unchanged and do not
+            contribute any filled values to this percentage. 
 
     Raises
     ------
@@ -55,10 +58,12 @@ def missing_values(df, method):
     - Numeric columns are imputed using the specified method.
     - Categorical (non-numeric) columns are imputed using mode.
     - Imputation is applied column-wise.
-    - If a column contains all NaN values, it is left unchanged.
-    - If multiple modes exist, the first mode returned by pandas is used.
+    - Columns containing all NaN values are left unchanged and do not
+      affect the filled percentage.
+    - If multiple modes exist (for both numeric and categorical columns), 
+      the first mode returned by pandas is used.
     - The original DataFrame is not modified; a copy is returned. 
-    - The missing percentage includes values filled in both numeric 
+    - The filled percentage includes values filled in both numeric 
     and categorical (non-numeric) columns.
 
     Examples
@@ -69,13 +74,13 @@ def missing_values(df, method):
     ...     'income': [50000, None, 52000, None],
     ...     'city': ['A', 'B', None, 'B']
     ... })
-    >>> result_df, missing_percentage = missing_values(df, method='median')
+    >>> result_df, filled_percentage = missing_values(df, method='median')
     >>> print(result_df)
         age   income city
     0  25.0  50000.0    A
     1  30.0  51000.0    B
     2  28.0  52000.0    B
     3  28.0  51000.0    B
-    >>> print(f"{missing_percentage:.1f}% of values were filled.")
+    >>> print(f"{filled_percentage:.1f}% of values were filled.")
     33.3% of values were filled.
     """
