@@ -98,4 +98,30 @@ def test_remove_duplicates_invalid_col_val():
     with pytest.raises(KeyError):
         remove_duplicates(df, cols=["user_id", "country"])
 
-#test for missing values?
+def test_remove_duplicates_missing_values():
+    """
+    Tests that rows with missing values in the same positions
+    are treated as duplicates.
+    """
+    df = pd.DataFrame({
+        "user_id": [101, 101],
+        "city": [None, None],
+        "age": [22, 22]})
+
+    result = remove_duplicates(df)
+
+    assert len(result) == 1
+
+def test_remove_duplicates_keep_false():
+    """
+    Tests that keep=False removes all duplicate rows.
+    """
+    df = pd.DataFrame({
+        "user_id": [101, 101, 101],
+        "city": ["Vancouver", "Vancouver", "Vancouver"],
+        "age": [22, 22, 22]
+    })
+
+    result = remove_duplicates(df, keep=False)
+
+    assert result.empty
