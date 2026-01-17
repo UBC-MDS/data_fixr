@@ -13,7 +13,9 @@ import numpy as np
 import pytest
 from data_fixr.missing_values import missing_values
 
+
 # Expected test cases
+
 
 def test_missing_values_median_numeric_and_mode_categorical():
     """
@@ -54,6 +56,21 @@ def test_missing_values_mean_imputation_numeric_only():
     assert filled_percentage == pytest.approx(33.333, rel=1e-2)
 
 
+def test_missing_values_mode_imputation_numeric_only():
+    """
+    Mode imputation should be applied correctly to numeric columns.
+    """
+    df = pd.DataFrame({
+        "a": [1, 2, 2, np.nan, 2, 3]
+    })
+
+    result_df, filled_percentage = missing_values(df, method="mode")
+
+    assert result_df.loc[3, "a"] == 2
+    assert isinstance(filled_percentage, float)
+    assert filled_percentage == pytest.approx(16.6667, rel=1e-2)
+    
+
 def test_missing_values_categorical_only():
     """
     All categorical columns should be imputed using mode.
@@ -72,7 +89,24 @@ def test_missing_values_categorical_only():
     assert filled_percentage == pytest.approx(25.0)
 
 
+def test_missing_values_does_not_modify_original():
+    """
+    The original DataFrame should remain unchanged.
+    """
+    df = pd.DataFrame({
+        "a": [1, np.nan, 3],
+        "b": ["x", np.nan, "z"]
+    })
+
+    df_original = df.copy()
+    result_df, filled_percentage = missing_values(df, method="mean")
+
+    pd.testing.assert_frame_equal(df, df_original)
+    assert result_df is not df
+
+
 # Edge test cases
+
 
 def test_missing_values_all_nan_column_unchanged():
     """
@@ -87,6 +121,7 @@ def test_missing_values_all_nan_column_unchanged():
     result_df, filled_percentage = missing_values(df, method="mean")
 
     assert result_df["b"].isna().all()
+    assert isinstance(filled_percentage, float)
     assert filled_percentage == pytest.approx(16.6667, rel=1e-2)
 
 
@@ -108,7 +143,7 @@ def test_missing_values_uses_first_mode():
 def test_missing_values_no_missing_values():
     """
     If there are no missing values, the DataFrame should be unchanged
-    and field_percentage should be 0.
+    and filled_percentage should be 0.
     """
     df = pd.DataFrame({
         "a": [1, 2, 3],
@@ -121,7 +156,34 @@ def test_missing_values_no_missing_values():
     assert filled_percentage == 0.0
 
 
+def test_missing_values_all_nan_dataframe():
+    """
+    DataFrame with all NaN values should remain unchanged.
+    """
+    df = pd.DataFrame({
+        "a": [np.nan, np.nan],
+        "b": [np.nan, np.nan]
+    })
+
+    result_df, filled_percentage = missing_values(df, method="mean")
+
+    assert result_df.isna().all().all()
+    assert filled_percentage == 0.0
+
+
+def test_missing_values_empty_dataframe():
+    """
+    Empty DataFrame should return empty DataFrame with 0% filled.
+    """
+    df = pd.DataFrame()
+    result_df, filled_percentage = missing_values(df, method="mean")
+
+    assert result_df.empty
+    assert filled_percentage == 0.0
+
+
 # Error handling test cases
+
 
 def test_missing_values_invalid_df_type():
     """
