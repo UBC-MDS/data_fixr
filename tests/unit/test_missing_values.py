@@ -74,14 +74,51 @@ def test_missing_values_categorical_only():
 
 # Edge test cases
 
+def test_missing_values_all_nan_column_unchanged():
+    """
+    Columns containing all NaN values should be left unchanged
+    and should not contribute filled values.
+    """
+    df = pd.DataFrame({
+        "a": [1, np.nan, 3],
+        "b": [np.nan, np.nan, np.nan]
+    })
+
+    result_df, filled_percentage = missing_values(df, method="mean")
+
+    assert result_df["b"].isna().all()
+    assert filled_percentage == pytest.approx(16.6667, rel=1e-2)
 
 
+def test_missing_values_uses_first_mode():
+    """
+    When multiple modes exist, the first mode returned by pandas
+    should be used.
+    """
+    df = pd.DataFrame({
+        "a": [1, 2, np.nan, np.nan]
+    })
+
+    result_df, filled_percentage = missing_values(df, method="mode")
+
+    assert result_df.loc[2, "a"] == 1
+    assert result_df.loc[3, "a"] == 1
 
 
+def test_missing_values_no_missing_values():
+    """
+    If there are no missing values, the DataFrame should be unchanged
+    and field_percentage should be 0.
+    """
+    df = pd.DataFrame({
+        "a": [1, 2, 3],
+        "b": ["x", "y", "z"]
+    })
+
+    result_df, filled_percentage = missing_values(df, method="mean")
+
+    pd.testing.assert_frame_equal(df, result_df)
+    assert filled_percentage == 0.0
 
 
-
-
-
-
-    
+# Error handling test cases
