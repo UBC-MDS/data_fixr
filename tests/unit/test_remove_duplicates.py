@@ -19,14 +19,14 @@ def test_remove_duplicates_default():
     Checking expected output of function using default parameters.
     """
     df = pd.DataFrame({
-        "id": [1, 1, 2],
-        "value": ["A", "A", "B"]
-    })
+    "user_id": [101, 101, 205],
+    "city": ["Vancouver", "Vancouver", "Toronto"],
+    "age": [22, 22, 30]})
 
     result = remove_duplicates(df)
 
     assert len(result) == 2
-    assert result["id"].tolist() == [1, 2]
+    assert result["user_id"].tolist() == [101, 205]
 
 def test_remove_duplicates_subset_cols_keep_last_with_report():
     """
@@ -35,17 +35,17 @@ def test_remove_duplicates_subset_cols_keep_last_with_report():
     and report=True.
     """
     df = pd.DataFrame({
-        "id": [1, 1, 2],
-        "value": ["A", "B", "C"]
-    })
+    "user_id": [101, 101, 205],
+    "city": ["Vancouver", "Toronto", "Montreal"],
+    "age": [22, 23, 30]})
 
     cleaned_df, report = remove_duplicates(
         df,
-        cols=["id"],
+        cols=["user_id"],
         keep="last",
         report=True)
 
-    assert cleaned_df.iloc[0]["value"] == "B"
+    assert cleaned_df.iloc[0]["city"] == "Toronto"
     assert len(cleaned_df) == 2
 
     assert isinstance(report, dict)
@@ -53,7 +53,7 @@ def test_remove_duplicates_subset_cols_keep_last_with_report():
     assert report["duplicate_rows"] == 1
     assert report["rows_removed"] == 1
     assert report["strategy"] == "last"
-    assert report["cols_used"] == ["id"]
+    assert report["cols_used"] == ["user_id"]
 
 def test_remove_duplicates_invalid_df_type():
     """
@@ -78,11 +78,10 @@ def test_remove_duplicates_invalid_col_type():
     Tests that error is raised when col type is not a list
     """
     df = pd.DataFrame({
-        "id": [1, 1, 2]
-    })
+        "user_id": [1, 1, 2]})
 
     with pytest.raises(TypeError):
-        remove_duplicates(df, cols="id")
+        remove_duplicates(df, cols="user_id")
 
 def test_remove_duplicates_invalid_col_val():
     """
@@ -91,10 +90,12 @@ def test_remove_duplicates_invalid_col_val():
     """
     
     df = pd.DataFrame({
-        "id": [1, 1, 2],
-        "value": ["A", "B", "C"]})
+        "user_id": [101, 101, 205],
+        "city": ["Vancouver", "Vancouver", "Toronto"],
+        "age": [22, 22, 30]
+    })
 
     with pytest.raises(KeyError):
-        remove_duplicates(df, cols=["id","name"])
+        remove_duplicates(df, cols=["user_id", "country"])
 
 #test for missing values?
