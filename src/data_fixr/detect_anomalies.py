@@ -1,5 +1,5 @@
 import pandas as pd
-def detect_anomalies(df, method):
+def detect_anomalies(df, method='zscore'):
     """
     This function flags outliers in numeric columns using either the
     Z-score method or the IQR method.
@@ -89,3 +89,57 @@ def detect_anomalies(df, method):
     >>> print(f"{pct:.1f}% of data points are outliers")
     16.7% of data points are outliers
     """
+    # validation of the input parameters:
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Input must be a pandas DataFrame")
+    
+    # Check for completely empty DataFrame (no columns, no rows)
+    if df.empty and len(df.columns) == 0:
+        raise TypeError("empty DataFrame")
+    
+    if method not in ['zscore', 'iqr']:
+        raise ValueError("method must be either 'zscore' or 'iqr'")
+    
+    #Selecting only numeric columns:
+    numeric_cols = df.select_dtypes(include='number').columns
+    if len(numeric_cols) == 0:
+        raise TypeError("no numeric columns found in DataFrame")
+    
+    # Check if DataFrame has zero rows (empty with columns)
+    if len(df) == 0:
+        raise ValueError("No data points found for numeric columns")
+    
+    #Ensuring that there is no NaN values in numeric columns:
+    for col in numeric_cols:
+        if df[col].isnull().any():
+            raise ValueError(f"column '{col}' contains NaN values")
+        if len(df[col]) < 3:
+            raise ValueError("Not enough data points for numeric columns")
+    
+    # Initialize result DataFrame and outlier count
+    result_df = df[numeric_cols].copy()
+    total_outliers = 0
+    total_values = 0
+    
+    # Detection of outliers in each numeric column:
+    for col in numeric_cols:
+        if method == "zscore":
+            mean = df[col].mean()
+            std = df[col].std()
+            z_scores = (df[col] - mean) / std
+            outliers = z_scores.abs() > 2
+        
+        elif method == "iqr":
+            Q1 = df[col].quantile(0.25)
+            Q3 = df[col].quantile(0.75)
+            IQR = Q3 - Q1
+            lower_bound = Q1 - 1.5 * IQR
+            upper_bound = Q3 + 1.5 * IQR
+            outliers = (df[col] < lower_bound) | (df[col] > upper_bound) 
+            
+        result_df[f"{col}_outlier"] = outliers
+        total_outliers += outliers.sum()
+        total_values += len(df[col])
+    
+    outlier_percentage = (total_outliers / total_values) * 100
+    return result_df, outlier_percentage
