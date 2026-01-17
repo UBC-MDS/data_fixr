@@ -22,9 +22,8 @@ def detect_anomalies(df, method='zscore'):
     df : pd.DataFrame
         The DataFrame containing numeric columns to analyze for anomalies.
         Non-numeric columns will be excluded from the analysis.
-    method : str
+    method : str, default='zscore'
         The anomaly detection method to use. Valid options are:
-
         - 'zscore' : For normally distributed data
         - 'iqr' : For skewed data or robust detection
 
@@ -32,10 +31,10 @@ def detect_anomalies(df, method='zscore'):
     -------
     tuple of (pd.DataFrame, float)
         result_df : pd.DataFrame
-            A DataFrame containing the original numeric columns plus 
-            additional boolean columns (named as '{column}_outlier') 
-            indicating whether each value is an outlier. True indicates 
-            an outlier, False indicates a normal value.
+            A DataFrame containing only the numeric columns plus additional
+            boolean columns (named as '{column}_outlier') indicating whether 
+            each value is an outlier. True indicates an outlier, False 
+            indicates a normal value.
         outlier_percentage : float
             The percentage of outliers detected across all numeric columns,
             calculated as (total outliers / total values) * 100.
@@ -52,7 +51,7 @@ def detect_anomalies(df, method='zscore'):
     Notes
     -----
     Z-score method:
-        Identifies points that are more than 3 standard deviations away 
+        Identifies points that are more than 2 standard deviations away 
         from the mean. The z-score is calculated as: z = (x - mean) / std.
         A data point is flagged as an outlier if |z| > 2.
 
@@ -66,7 +65,8 @@ def detect_anomalies(df, method='zscore'):
         - Requires at least 3 data points per numeric column for
           meaningful analysis
         - Non-numeric columns are automatically excluded
-        - Missing values (NaN) are not flagged as outliers
+        - Missing values (NaN) are not flagged as outliers but will
+          raise an error if present in numeric columns.
 
     Examples
     --------
@@ -105,7 +105,7 @@ def detect_anomalies(df, method='zscore'):
     if len(numeric_cols) == 0:
         raise TypeError("no numeric columns found in DataFrame")
     
-    # Check if DataFrame has zero rows (empty with columns)
+    #Check if DataFrame has zero rows (empty with columns)
     if len(df) == 0:
         raise ValueError("No data points found for numeric columns")
     
