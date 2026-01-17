@@ -13,7 +13,7 @@ If you don't plan to publish to PyPI, you can remove them.*
 data_fixr is a lightweight Python package designed to support exploratory data analysis and early-stage data cleaning for tabular datasets. The package provides standardized, machine-readable diagnostics and cleaning utilities that help users quickly assess data quality, identify common issues, and prepare datasets for downstream analysis or machine learning workflows. Rather than generating plots or reports, data_fixr focuses on returning clean, structured outputs that can be easily tested, logged, or integrated into automated pipelines.
 
 ## Functions
-- **Correlation report:**
+- **Correlation Report:**
 Computes pairwise correlations between numeric columns in a pandas DataFrame and returns a long-format diagnostic table. The output summarizes the strength and direction of relationships between features in a standardized, machine-readable format suitable for exploratory analysis and preprocessing workflows.
 
 - **Remove Duplicates:**
@@ -22,7 +22,7 @@ Identifies and removes duplicate rows for a given dataset. Users can specify the
 - **Detect Anomalies:**
 This function identifies and flags outliers in numeric columns of a pandas DataFrame using either the Z-score method (for normally distributed data) or the IQR (Interquartile Range) method (for skewed data). It returns a DataFrame with the numeric columns and boolean outlier flags for each numeric column, as well as the overall percentage of outliers detected.
 
-- **Fill Missing Values:**
+- **Missing Values:**
 This function fills missing values (NaN) in both numeric and categorical (non-numeric) columns of a pandas DataFrame. Numeric columns are filled using a user-specified method (mean, median, or mode), while categorical (non-numeric) columns are automatically filled using mode imputation. The function returns a DataFrame with missing values filled and the overall percentage of missing values that were imputed across all columns.
 
 
@@ -36,20 +36,28 @@ In particular, while duplicate removal and missing-value imputation functionalit
 
 ## Get started
 
-You can install this package into your preferred Python environment using pip:
+First, clone the repository:
 
 ```bash
-$ pip install data_fixr
+$ git clone https://github.com/UBC-MDS/data_fixr.git
 ```
 
-To use data_fixr in your code:
+Navigate into the package directory:
 
-```python
->>> import data_fixr
->>> data_fixr.correlation_report(df)
->>> data_fixr.remove_duplicates(df)
->>> data_fixr.fill_missing_values(df, method = "median")
->>> data_fixr.detect_anomalies(df, method = "iqr")
+```bash
+$ cd data_fixr
+```
+
+Install the package in editable mode:
+
+```bash
+$ pip install -e .
+```
+
+To run the tests:
+
+```bash
+$ pytest
 ```
 
 ## Contributors
