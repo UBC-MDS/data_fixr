@@ -1,0 +1,5 @@
+name: data_fixr
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11

@@ -48,17 +48,31 @@ Navigate into the package directory:
 $ cd data_fixr
 ```
 
+(Optional) To run the package in a clean environment with Python 3.11.
+
+```bash
+$ conda env create -f environment.yml
+$ conda activate data_fixr
+```
+
 Install the package in editable mode:
 
 ```bash
 $ pip install -e .
 ```
 
-To run the tests:
+To run the tests (developer mode):
 
 ```bash
-$ pytest
+$ pip install -e ".[tests]"
 ```
+
+```bash
+$ pytest 
+```
+
+## Requirements
+- Python ≥ 3.10
 
 ## Contributors
 - Apoorva Srivastava
