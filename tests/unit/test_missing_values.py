@@ -122,3 +122,22 @@ def test_missing_values_no_missing_values():
 
 
 # Error handling test cases
+
+def test_missing_values_invalid_df_type():
+    """
+    Non-DataFrame input should raise TypeError.
+    """
+    with pytest.raises(TypeError):
+        missing_values([1, 2, 3], method="mean")
+
+
+def test_missing_values_invalid_method():
+    """
+    Invalid numeric imputation method should raise ValueError.
+    """
+    df = pd.DataFrame({
+        "a": [1, np.nan, 3]
+    })
+
+    with pytest.raises(ValueError):
+        missing_values(df, method="average")
