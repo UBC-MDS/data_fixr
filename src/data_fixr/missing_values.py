@@ -113,7 +113,7 @@ def missing_values(df, method):
             fill_value = result_df[col].mode()
             fill_value = fill_value[0] if not fill_value.empty else np.nan
 
-        result_df[col].fillna(fill_value, inplace=True)
+        result_df[col] = result_df[col].fillna(fill_value)
 
     # Impute categorical columns using mode
     for col in categorical_cols:
@@ -122,7 +122,7 @@ def missing_values(df, method):
 
         fill_value = result_df[col].mode()
         fill_value = fill_value[0] if not fill_value.empty else np.nan
-        result_df[col].fillna(fill_value, inplace=True)
+        result_df[col] = result_df[col].fillna(fill_value)
 
     # Compute filled percentage
     total_missing_after = result_df.isna().sum().sum()
