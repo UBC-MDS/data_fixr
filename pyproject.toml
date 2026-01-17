@@ -33,7 +33,7 @@ classifiers = [
 # TODO: add keywords
 keywords = []
 # TODO: add dependencies
-dependencies = ["pandas"]
+dependencies = ["pandas", "numpy", "scipy"]
 
 [project.urls]
 Homepage = "https://github.com/nourshawk/data_fixr"
