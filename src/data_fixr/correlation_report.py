@@ -64,7 +64,7 @@ def correlation_report(df, method: str = "pearson"):
     """
 
 
-    # Validating the Inputss
+    # Validating the Inputs
 
     if not isinstance(df, pd.DataFrame):
         raise TypeError("df must be a pandas DataFrame.")
