@@ -63,13 +63,23 @@ def correlation_report(df, method: str = "pearson"):
 
     """
 
+
+    # Validating the Inputss
+
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("df must be a pandas DataFrame.")
+    
+    if method not in {"pearson", "spearman", "kendall"}:
+        raise ValueError("method must be one of {'pearson', 'spearman', 'kendall'}.")
+
     numeric_df = df.select_dtypes(include="number")
+
+    if numeric_df.shape[1] < 2:
+        raise ValueError("At least two numeric columns are required for correlation.")
     
     corr_matrix = numeric_df.corr(method=method)
 
     records = []
-
-
     cols = corr_matrix.columns
 
     for i in range(len(cols)):

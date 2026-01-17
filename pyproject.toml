@@ -17,8 +17,7 @@ version = "0.1.0"
 
 description = "A small toolkit for reproducible exploratory data analysis and data cleaning processes."
 authors = [
-    { name = "Nour Shawky, Apoorva Srivastava, Zain Nofal, Chikire Aku-Ibe
-", email = "nourshawky03@hotmail.com" },
+    { name = "Nour Shawky, Apoorva Srivastava, Zain Nofal, Chikire Aku-Ibe", email = "nourshawky03@hotmail.com" },
 ]
 license = "MIT"
 requires-python = ">= 3.10" # Adjust based on the minimum version of Python that you support
