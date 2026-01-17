@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def fill_missing_values(df, method):
+def missing_values(df, method):
     """
     This function fills missing values (NaN) in a pandas DataFrame using
     column-appropriate imputation strategies.
@@ -69,7 +69,7 @@ def fill_missing_values(df, method):
     ...     'income': [50000, None, 52000, None],
     ...     'city': ['A', 'B', None, 'B']
     ... })
-    >>> result_df, missing_percentage = fill_missing_values(df, method='median')
+    >>> result_df, missing_percentage = missing_values(df, method='median')
     >>> print(result_df)
         age   income city
     0  25.0  50000.0    A
