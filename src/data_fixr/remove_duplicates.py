@@ -1,3 +1,5 @@
+import pandas as pd
+
 def remove_duplicates(df, cols=None, keep='first', report=False):
     """
     Identifies and removes duplicate rows for a given dataframe. Optionally, returns a summary
@@ -80,5 +82,42 @@ def remove_duplicates(df, cols=None, keep='first', report=False):
     {'total_rows': 4,
     'duplicate_rows': 1,
     'rows_removed': 1,
-    'subset_used': ['id']}
+    'cols_used': ['id']}
     """
+
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Dataframe must be a pandas DataFrame.")
+    
+    if keep not in {"first", "last", False}:
+        raise ValueError("Keep value must be one of {'first', 'last', False}.")
+    
+    if cols is not None:
+        if not isinstance(cols, list):
+            raise TypeError("cols must be a list of column names or None.")
+        
+        missing_cols = [col for col in cols if col not in df.columns]
+        if missing_cols:
+            raise KeyError(f"Columns not found in DataFrame: {missing_cols}")
+        
+    total_rows = len(df)
+
+    duplicated_mask = df.duplicated(subset=cols, keep=keep)
+    duplicate_rows = duplicated_mask.sum()
+
+    cleaned_df = df.loc[~duplicated_mask].copy()
+    rows_removed = total_rows - len(cleaned_df)
+
+
+    #code for generating optional summary report
+
+    if report:
+        summary = {
+            "total_rows": total_rows,
+            "duplicate_rows": int(duplicate_rows),
+            "rows_removed": int(rows_removed),
+            "strategy": keep,
+            "cols_used": cols,
+        }
+        return cleaned_df, summary
+
+    return cleaned_df
