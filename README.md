@@ -71,6 +71,12 @@ $ pip install -e ".[tests]"
 $ pytest 
 ```
 
+If you have opted to use the coda environment, deactivate the environment once finished with:
+```bash
+$ conda deactivate
+```
+
+
 ## Requirements
 - Python ≥ 3.10
 

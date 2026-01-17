@@ -10,9 +10,10 @@ inputs.
 
 import pandas as pd
 import pytest
-from data_fixr.remove_duplicates import remove_duplicates
 
-#expected use cases
+from data_fixr import remove_duplicates
+
+#from data_fixr.remove_duplicates import remove_duplicates
 
 def test_remove_duplicates_default():
     """
