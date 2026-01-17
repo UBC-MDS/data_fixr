@@ -54,7 +54,7 @@ def detect_anomalies(df, method='zscore'):
     Z-score method:
         Identifies points that are more than 3 standard deviations away 
         from the mean. The z-score is calculated as: z = (x - mean) / std.
-        A data point is flagged as an outlier if |z| > 3.
+        A data point is flagged as an outlier if |z| > 2.
 
     IQR method:
         Uses the interquartile range to identify outliers. Calculates Q1 
