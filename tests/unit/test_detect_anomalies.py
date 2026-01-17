@@ -78,8 +78,8 @@ def test_mixed_dataframe(test_data):
     assert 'humidity_outlier' in result_df.columns
     assert 'location_outlier' not in result_df.columns
     assert 'city_outlier' not in result_df.columns
-    assert 'location' in result_df.columns
-    assert 'city' in result_df.columns
+    assert 'location' not in result_df.columns
+    assert 'city' not in result_df.columns
     assert result_df.loc[4, 'temperature_outlier'] == True
     assert result_df.loc[5, 'humidity_outlier'] == True
     
