@@ -13,7 +13,7 @@ or less than 3 data points.
 """
 import pytest
 import pandas as pd
-from src.data_fixr.detect_anomalies import detect_anomalies
+from data_fixr.detect_anomalies import detect_anomalies
 
 @pytest.fixture
 def test_data():
