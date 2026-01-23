@@ -16,8 +16,6 @@ when given invalid input.
 import pandas as pd
 import pytest
 from data_fixr import correlation_report
-#from data_fixr.correlation_report import correlation_report
-
 
 
 def test_correlation_report_three_numeric_columns_values_and_schema():
@@ -71,7 +69,6 @@ def test_correlation_report_ignores_non_numeric_columns():
 
 
 
-
 def test_correlation_report_invalid_method_raises_value_error():
     """
     Invalid method should raise ValueError.
@@ -98,3 +95,62 @@ def test_correlation_report_non_dataframe_raises():
     """Non-DataFrame input should raise TypeError."""
     with pytest.raises(TypeError):
         correlation_report(["not", "a", "df"])
+
+
+# Adding 4 new tests to trigger automations.
+
+def test_correlation_report_negative_correlation_value():
+    """
+    Pearson correlation should correctly identify negative relationships.
+    """
+    df = pd.DataFrame({
+        "x": [1, 2, 3, 4],
+        "y": [4, 3, 2, 1],
+    })
+
+    result = correlation_report(df, method="pearson")
+
+    assert len(result) == 1
+    assert result.loc[0, "correlation"] == pytest.approx(-1.0)
+    assert result.loc[0, "abs_correlation"] == pytest.approx(1.0)
+
+def test_correlation_report_spearman_method():
+    """
+    Spearman correlation should work for monotonic relationships.
+    """
+    df = pd.DataFrame({
+        "a": [1, 2, 3, 4, 5],
+        "b": [10, 20, 30, 40, 50],
+    })
+
+    result = correlation_report(df, method="spearman")
+
+    assert len(result) == 1
+    assert result.loc[0, "correlation"] == pytest.approx(1.0)
+
+def test_correlation_report_kendall_method():
+    """
+    Kendall correlation should work for monotonic relationships.
+    """
+    df = pd.DataFrame({
+        "a": [1, 2, 3, 4, 5],
+        "b": [5, 4, 3, 2, 1],
+    })
+
+    result = correlation_report(df, method="kendall")
+
+    assert len(result) == 1
+    assert result.loc[0, "correlation"] == pytest.approx(-1.0)
+
+def test_correlation_report_handles_missing_values():
+    """
+    Missing values should not make the function crash
+    """
+    df = pd.DataFrame({
+        "a": [1, 2, None, 4],
+        "b": [4, None, 2, 1],
+    })
+
+    result = correlation_report(df, method="pearson")
+    assert len(result) == 1
+    assert pd.notna(result.loc[0, "correlation"])
