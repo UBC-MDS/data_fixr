@@ -15,8 +15,7 @@ current_year = datetime.now().year
 # -- General project information -----------------------------
 # General information about the project.
 project = "data_fixr"
-copyright = "Copyright © 2026 Nour Shawky, Apoorva Srivastava, Zain Nofal, Chikire Aku-Ibe
-"
+copyright = "Copyright © 2026 Nour Shawky, Apoorva Srivastava, Zain Nofal, Chikire Aku-Ibe"
 html_show_sphinx = False
 
 # Try to get the version info for the project you're documenting, acts as replacement for
