@@ -1,0 +1,1 @@
+Sitemap: https://UBC-MDS.github.io/data_fixr/sitemap.xml
