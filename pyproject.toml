@@ -46,7 +46,8 @@ Download = "https://pypi.org/project/data_fixr/#files"
 # The groups below should be in the [development-groups] table
 # They are here now because hatch hasn't released support for them but plans to
 # in Mid November 2025.
-dev = [
+dev = [ 
+    "ruff",
     "hatch",
     "pre-commit",
 ]
@@ -59,6 +60,7 @@ docs = [
     "sphinx-autoapi>=3.6.0",
     "sphinx_design>=0.6.1",
     "sphinx-copybutton>=0.5.2",
+    "quartodoc"
 ]
 
 build = [

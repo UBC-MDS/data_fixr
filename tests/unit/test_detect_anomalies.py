@@ -128,7 +128,7 @@ def test_no_outliers_detected_zscore():
         'values': [10, 11, 12, 13, 14, 15]  # No extreme values
     })
     result_df, pct = detect_anomalies(df, method='zscore')
-    assert (result_df['values_outlier'] == False).all()
+    assert not result_df['values_outlier'].any()
     assert pct == 0.0
 
 def test_no_outliers_detected_iqr():
@@ -137,7 +137,7 @@ def test_no_outliers_detected_iqr():
         'values': [10, 11, 12, 13, 14, 15]  # No extreme values
     })
     result_df, pct = detect_anomalies(df, method='iqr')
-    assert (result_df['values_outlier'] == False).all()
+    assert not result_df['values_outlier'].any()
     assert pct == 0.0
 
 def test_outlier_percentage_calculation(test_data):

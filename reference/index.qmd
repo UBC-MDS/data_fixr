@@ -1,0 +1,12 @@
+# Function reference {.doc .doc-index}
+
+## Some functions
+
+Functions to inspect docstrings.
+
+| | |
+| --- | --- |
+| [correlation_report](correlation_report.qmd#data_fixr.correlation_report) |  |
+| [detect_anomalies](detect_anomalies.qmd#data_fixr.detect_anomalies) |  |
+| [missing_values](missing_values.qmd#data_fixr.missing_values) |  |
+| [remove_duplicates](remove_duplicates.qmd#data_fixr.remove_duplicates) |  |
