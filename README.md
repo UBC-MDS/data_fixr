@@ -69,7 +69,7 @@ To see example use cases of our functions, refer to the reference page of the [d
 
 ## Development and Testing
 
-To contribute, run the tests, or build documentation, follow the steps below:
+To contribute, run the tests, or build documentation, follow the steps below.
 
 First, clone the repository and navigate to the root:
 
@@ -116,9 +116,10 @@ To preview the documentation:
 quarto preview
 ```
 
-Documentation is automatically built and deployed via GitHub Actions when changes are merged into ```main```.
+**Documentation is automatically built and deployed via GitHub Actions when changes are merged into ```main```.**
 
 If you have opted to use the conda environment, deactivate the environment once finished with:
+
 ```bash
 $ conda deactivate
 ```
