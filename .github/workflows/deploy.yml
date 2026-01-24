@@ -2,7 +2,7 @@ name: publish-test-pypi
 
 on:
   push:
-    branches: [ main, cont_deployment ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
