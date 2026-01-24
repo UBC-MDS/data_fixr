@@ -34,7 +34,7 @@ def missing_values(df, method):
 
     Returns
     -------
-    tuple of (pd.DataFrame, float)
+    (pd.DataFrame, float)
         result_df : pd.DataFrame
             A DataFrame with missing values filled in both numeric and
             categorical (non-numeric) columns.
