@@ -13,16 +13,17 @@ If you don't plan to publish to PyPI, you can remove them.*
 data_fixr is a lightweight Python package designed to support exploratory data analysis and early-stage data cleaning for tabular datasets. The package provides standardized, machine-readable diagnostics and cleaning utilities that help users quickly assess data quality, identify common issues, and prepare datasets for downstream analysis or machine learning workflows. Rather than generating plots or reports, data_fixr focuses on returning clean, structured outputs that can be easily tested, logged, or integrated into automated pipelines.
 
 ## Functions
-- **Correlation Report:**
+
+- `correlation_report()`:
 Computes pairwise correlations between numeric columns in a pandas DataFrame and returns a long-format diagnostic table. The output summarizes the strength and direction of relationships between features in a standardized, machine-readable format suitable for exploratory analysis and preprocessing workflows.
 
-- **Remove Duplicates:**
+- `remove_duplicates()`:
 Identifies and removes duplicate rows for a given dataset. Users can specify the retention strategy for handling duplicates and choose whether duplicates are detected using all columns or a specified subset. Optionally, the function can return a useful summary report describing the number of duplicate rows detected and removed.
 
-- **Detect Anomalies:**
+- `detect_anomalies()`':
 This function identifies and flags outliers in numeric columns of a pandas DataFrame using either the Z-score method (for normally distributed data) or the IQR (Interquartile Range) method (for skewed data). It returns a DataFrame with the numeric columns and boolean outlier flags for each numeric column, as well as the overall percentage of outliers detected.
 
-- **Missing Values:**
+- `missing_values`:
 This function fills missing values (NaN) in both numeric and categorical (non-numeric) columns of a pandas DataFrame. Numeric columns are filled using a user-specified method (mean, median, or mode), while categorical (non-numeric) columns are automatically filled using mode imputation. The function returns a DataFrame with missing values filled and the overall percentage of missing values that were imputed across all columns.
 
 
@@ -33,18 +34,47 @@ The functionality provided by **data_fixr** overlaps partially with capabilities
 
 In particular, while duplicate removal and missing-value imputation functionality already exist in pandas, the corresponding functions in data_fixr extend this behavior by optionally returning structured summary information. The duplicate removal function can return a summary report describing how many duplicate rows were detected and removed, while the missing-value filling function reports the overall percentage of missing values that were imputed across the dataset. Additionally, automated exploratory data analysis tools such as [ydata-profiling](https://ydata.ai/) focus on generating comprehensive visual or HTML reports, whereas data_fixr emphasizes lightweight, modular functions that return machine-readable outputs intended for exploratory diagnostics, reproducible preprocessing pipelines, and downstream machine learning workflows.
 
+## Installation
 
-## Get started
+### Install from Github
 
-First, clone the repository:
+```bash
+git clone https://github.com/UBC-MDS/data_fixr.git
+cd data_fixr
+pip install -e .
+```
+
+### Install from Test PyPI
+
+To install the package from Test PyPI, run the following command in your preferred environment:
+
+```bash
+$ pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ data-fixr
+```
+
+### Verify installation via python interpreter
+
+```python
+from data_fixr import (
+    correlation_report,
+    remove_duplicates,
+    detect_anomalies,
+    fill_missing_values
+)
+```
+
+## Usage
+
+To see example use cases of our functions, refer to the reference page of the [documentation](https://ubc-mds.github.io/data_fixr/reference/)
+
+## Development and Testing
+
+To contribute, run the tests, or build documentation, follow the steps below:
+
+First, clone the repository and navigate to the root:
 
 ```bash
 $ git clone https://github.com/UBC-MDS/data_fixr.git
-```
-
-Navigate into the package directory:
-
-```bash
 $ cd data_fixr
 ```
 
@@ -61,21 +91,37 @@ Install the package in editable mode:
 $ pip install -e .
 ```
 
-To run the tests (developer mode):
+Install the required dependencies:
 
 ```bash
-$ pip install -e ".[tests]"
+$ pip install -e ".[tests, dev, docs]"
 ```
+
+To run tests:
 
 ```bash
-$ pytest 
+$ pytest --cov=src --cov-branch --cov-report=term-missing
 ```
 
-If you have opted to use the coda environment, deactivate the environment once finished with:
+To build documentation locally:
+
+```bash
+quartodoc build
+quarto render 
+```
+
+To preview the documentation:
+
+```bash
+quarto preview
+```
+
+Documentation is automatically built and deployed via GitHub Actions when changes are merged into ```main```.
+
+If you have opted to use the conda environment, deactivate the environment once finished with:
 ```bash
 $ conda deactivate
 ```
-
 
 ## Requirements
 - Python ≥ 3.10
@@ -88,6 +134,5 @@ $ conda deactivate
 
 ## Copyright
 
-- Copyright © 2026 Nour Shawky, Apoorva Srivastava, Zain Nofal, Chikire Aku-Ibe
-.
+- Copyright © 2026 Nour Shawky, Apoorva Srivastava, Zain Nofal, Chikire Aku-Ibe.
 - Free software distributed under the [MIT License](./LICENSE).
