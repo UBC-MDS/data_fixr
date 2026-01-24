@@ -36,10 +36,10 @@ keywords = []
 dependencies = ["pandas", "numpy", "scipy"]
 
 [project.urls]
-Homepage = "https://github.com/nourshawk/data_fixr"
-"Source Code" = "https://github.com/nourshawk/data_fixr"
-"Bug Tracker" = "https://github.com/nourshawk/data_fixr/issues"
-Documentation = "https://github.com/nourshawk/data_fixr/blob/main/README.md"
+Homepage = "https://github.com/UBC-MDS/data_fixr"
+"Source Code" = "https://github.com/UBC-MDS/data_fixr"
+"Bug Tracker" = "https://github.com/UBC-MDS/data_fixr/issues"
+Documentation = "https://github.com/UBC-MDS/data_fixr/blob/main/README.md"
 Download = "https://pypi.org/project/data_fixr/#files"
 
 [project.optional-dependencies]
