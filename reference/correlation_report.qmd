@@ -1,0 +1,67 @@
+# correlation_report { #data_fixr.correlation_report }
+
+`correlation_report`
+
+
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [correlation_report](#data_fixr.correlation_report.correlation_report) | Compute pairwise correlations between numeric columns of a DataFrame. |
+
+### correlation_report { #data_fixr.correlation_report.correlation_report }
+
+```python
+correlation_report.correlation_report(df, method='pearson')
+```
+
+Compute pairwise correlations between numeric columns of a DataFrame.
+
+This function is intended for exploratory data analysis diagnostics without plotting.
+It computes pairwise correlations between numeric features and returns a long-format
+report table, where each row corresponds to a unique feature pair.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name   | Type   | Description                                                                                                                                                  | Default     |
+|--------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| df     |        | Input pandas DataFrame containing the data to analyze.                                                                                                       | _required_  |
+| method | str    | Correlation method to use. Supported values are: - "pearson": linear correlation. - "spearman": rank-based correlation. - "kendall": rank-based correlation. | `'pearson'` |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type             | Description                                                                                                                                                                                                                                                                                                                                             |
+|--------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|        | pandas.DataFrame | A long-format correlation report with the following columns: - feature_1: name of the first feature - feature_2: name of the second feature - correlation: correlation value - abs_correlation: absolute value of the correlation  Each row represents a unique pair of numeric features. Self-correlations and duplicate symmetric pairs are excluded. |
+
+#### Raises {.doc-section .doc-section-raises}
+
+| Name   | Type       | Description                                                                                                                 |
+|--------|------------|-----------------------------------------------------------------------------------------------------------------------------|
+|        | TypeError  | If df is not a pandas DataFrame.                                                                                            |
+|        | ValueError | If method is not one of the supported correlation methods. If fewer than two numeric columns are available for correlation. |
+
+#### Notes {.doc-section .doc-section-notes}
+
+- Only numeric columns are considered.
+- Missing values are handled according to pandas' correlation behavior.
+- This function does not generate plots or files.
+- The output is intended to be machine-readable and suitable for use in
+  automated analysis or reporting pipelines.
+
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> import pandas as pd
+>>> df = pd.DataFrame({
+...     "age": [20, 30, 40],
+...     "income": [40000, 60000, 80000],
+...     "score": [3, 2, 1],
+... })
+>>> correlation_report(df, method="pearson")
+  feature_1 feature_2  correlation  abs_correlation
+0       age    income          1.0              1.0
+1       age     score         -1.0              1.0
+2    income     score         -1.0              1.0
+```
