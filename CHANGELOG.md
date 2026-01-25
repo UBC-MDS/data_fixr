@@ -62,5 +62,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed 
 
 - Updated readme with new installation instructions [#70](https://github.com/UBC-MDS/data_fixr/pull/70)
-- Updated Changelog to reflect Milestone 3 updates [??]
-- Changed package version in toml file [??]
+- Updated Changelog to reflect Milestone 3 updates [#73](https://github.com/UBC-MDS/data_fixr/pull/73)
