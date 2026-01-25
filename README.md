@@ -56,7 +56,7 @@ from data_fixr import (
     correlation_report,
     remove_duplicates,
     detect_anomalies,
-    fill_missing_values
+    missing_values
 )
 ```
 
