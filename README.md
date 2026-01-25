@@ -60,9 +60,9 @@ from data_fixr import (
 )
 ```
 
-## Usage
+## Documentation
 
-To see example use cases of our functions, refer to the reference page of the [documentation](https://ubc-mds.github.io/data_fixr/reference/)
+To view usage examples and function details, refer to the reference page of the [documentation](https://ubc-mds.github.io/data_fixr/reference/).
 
 ## Development and Testing
 
