@@ -35,6 +35,7 @@ jobs:
   pypi-test:
     needs: unit-test-pytest
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' # Only deploy from main branch
     
     steps:
       - name: Check-out repository
@@ -58,3 +59,12 @@ jobs:
         with:
           repository-url: https://test.pypi.org/legacy/
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          skip-existing: true # Skip if version already exists
+
+      - name: Test installation from Test PyPI
+        run: |
+            pip install \
+            --index-url https://test.pypi.org/simple/ \
+            --extra-index-url https://pypi.org/simple/ \
+            data-fixr
+            python -c "import data_fixr; print('Test installation successful.')"
