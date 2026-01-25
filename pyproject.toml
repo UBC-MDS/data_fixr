@@ -13,7 +13,7 @@ requires = ["hatchling"]
 [project]
 name = "data_fixr"
 # You can chose to use dynamic versioning with hatch or static where you add it manually.
-version = "0.1.0"
+version = "0.1.1"
 
 description = "A small toolkit for reproducible exploratory data analysis and data cleaning processes."
 authors = [
