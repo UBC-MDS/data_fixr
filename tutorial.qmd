@@ -1,0 +1,79 @@
+---
+title: "Tutorial"
+---
+
+This tutorial demonstrates an example workflow for how to use the `data_fixr` package to clean and analyze your data.
+
+## Installation
+
+First, install the package from Test PyPI:
+```bash
+pip install -i https://test.pypi.org/simple/ data-fixr==0.1.2
+```
+
+## Getting Started
+
+Import the functions you need:
+```{python}
+from data_fixr import (
+    correlation_report,
+    remove_duplicates,
+    detect_anomalies,
+    missing_values
+)
+import pandas as pd
+```
+
+## Load Sample Data
+
+Let's create a sample dataset to demonstrate the package functionality:
+```{python}
+# Create sample data with some issues
+data = pd.DataFrame({
+    'age': [25, 30, 25, 150, 35, 30],  # 150 is an anomaly
+    'income': [50000, 60000, 50000, 70000, None, 60000],  # contains duplicate row and missing value
+    'years_experience': [3, 7, 3, 25, 10, 7]
+})
+data
+```
+
+## Detecting Missing Values
+
+Check for missing values in the data and fill them in with method: 'mode'
+To see alternative method values, navigate to the [reference](https://ubc-mds.github.io/data_fixr/reference/) page.
+```{python}
+missing_report = missing_values(data)
+print(missing_report)
+```
+
+As well as filling in the missing values with the specified method, the function also returns a column with the percentage of total DataFrame values that were originally missing and have been filled.
+
+## Removing Duplicates
+
+Identify and remove duplicate rows, keeping the first instance of the duplicated observation:
+```{python}
+clean_data = remove_duplicates(data, keep='first', report=True)
+print(clean_data)
+```
+
+As well as removing the duplicated observation, the function also produces a report of the the number of duplicates detected, number of rows removed, strategy used etc. To see full details of the report parameter feature, see the [reference](https://ubc-mds.github.io/data_fixr/reference/) page.
+
+## Detecting Anomalies
+
+Find outliers or anomalous values with default zscore method:
+```{python}
+anomalies = detect_anomalies(data)
+print(anomalies)
+```
+
+The result returned is a tuple of a dataframe summarizing which obervations are outliers using boolean (True/False) column, along with an outlier percnetage score across all numeric columns. The function can also use the 'iqr' method for detecting anomalies, see [reference](https://ubc-mds.github.io/data_fixr/reference/) page for more information.
+
+## Correlation Analysis
+
+Generate a correlation report showing pairwise correlations between all numeric variables in the data using the pearson correlation method:
+```{python}
+corr_report = correlation_report(data, method='spearman')
+print(corr_report)
+```
+
+Each row in the returned report represents the correlation value for each unique pair of numeric features. An absolute correlation value is also computed. Navigate to the [reference](https://ubc-mds.github.io/data_fixr/reference/) page to explore alternative values for the method parameter.
