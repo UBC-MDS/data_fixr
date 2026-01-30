@@ -61,5 +61,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed 
 
-- Updated readme with new installation instructions [#70](https://github.com/UBC-MDS/data_fixr/pull/70)
-- Updated Changelog to reflect Milestone 3 updates [#73](https://github.com/UBC-MDS/data_fixr/pull/73)
+- Updated README.md with new installation instructions [#70](https://github.com/UBC-MDS/data_fixr/pull/70)
+- Updated CHANGELOG.md to reflect Milestone 3 updates [#73](https://github.com/UBC-MDS/data_fixr/pull/73)
+
+## [3.0.0] - Milestone 4 - 2026-01-31
+
+### Added
+
+- Set up Netlify and documentation preview workflow (`docs-preview.yml`) for automated docs deployment [#92](https://github.com/UBC-MDS/data_fixr/pull/92)
+- Tutorial documentation page and related docs config (`tutorial.qmd` and updated quarto config) [#98](https://github.com/UBC-MDS/data_fixr/pull/98)
