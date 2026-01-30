@@ -116,6 +116,14 @@ Before you submit a pull request, check that it meets these guidelines:
 3. Your pull request will automatically be checked by the full test suite.
    It needs to pass all of them before it can be considered for merging.
 
+## Retrospective
+
+In every project, whether successful or challenging, looking back and analyzing how the work unfolded is critical for continuous improvement. In agile software development, this practice is known as a **retrospective**.
+
+This project encourages structured retrospectives at the end of major milestones to reflect on planning accuracy, tooling, collaboration practices, and workflow bottlenecks, with a focus on actionable improvements for future work.
+
+
+
 ## Code of Conduct
 
 Please note that the data_fixr package is released with a [Code of Conduct](https://github.com/UBC-MDS/data_fixr/blob/main/CODE_OF_CONDUCT.md). By contributing to this project you agree to abide by its terms.
