@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def missing_values(df, method):
+def missing_values(df, method="median"):
     """
     This function fills missing values (NaN) in a pandas DataFrame using
     column-appropriate imputation strategies.
@@ -22,7 +22,7 @@ def missing_values(df, method):
     ----------
     df : pd.DataFrame
         The DataFrame containing missing values to be imputed.
-    method : str
+    method : str, default="median"
         The imputation method to use for numeric columns. 
         Valid options are:
         - 'mean'   : Replace NaN with column mean (suitable for symmetric data)
