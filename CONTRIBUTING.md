@@ -150,7 +150,18 @@ Bulk-editing in the Table view is encouraged to correct metadata efficiently.
 
 ---
 
+### Analytical Views
 
+#### Milestone Progress (Velocity)
+
+To assess how project scope evolved over time we created a view to assess our milestone progress.
+
+This view helps answer questions such as:
+- How did the scope change from one milestone to the next?
+   
+- Were later milestones more work-intensive than expected?
+
+---
 
 ## Code of Conduct
 
