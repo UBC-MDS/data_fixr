@@ -122,6 +122,34 @@ In every project, whether successful or challenging, looking back and analyzing 
 
 This project encourages structured retrospectives at the end of major milestones to reflect on planning accuracy, tooling, collaboration practices, and workflow bottlenecks, with a focus on actionable improvements for future work.
 
+### Retrospective Framework (DAKI)
+
+For retrospectives, we recommend using the **DAKI** framework:
+
+- **Drop**: Practices, tools, or workflows that did not work well and should be discontinued.
+- **Add**: New practices, tools, or processes that should be introduced in future work.
+- **Keep**: Practices that worked well and should be continued.
+- **Improve**: Existing practices that were helpful but need refinement.
+
+This framework helps keep reflections concise, structured, and actionable.
+
+---
+
+### Creating GitHub Project Views to Support Retrospectives
+
+Retrospectives should be grounded in evidence from the project’s GitHub tracking data. Before analysis, ensure good **data hygiene** in the GitHub Project board.
+
+#### Data Hygiene Checklist
+
+- **Status Check**: All completed tasks are moved to the `Done` column.
+- **Attribution**: Every issue has an assigned contributor.
+- **Clarity**: Tasks are appropriately split or cross-linked if necessary.
+- **Timeline**: Every issue is assigned to a milestone (M1, M2, M3, M4).
+
+Bulk-editing in the Table view is encouraged to correct metadata efficiently.
+
+---
+
 
 
 ## Code of Conduct
