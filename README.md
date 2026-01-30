@@ -2,8 +2,8 @@
 
 |        |        |
 |--------|--------|
-| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/data_fixr.svg)](https://pypi.org/project/data_fixr/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/data_fixr.svg)](https://pypi.org/project/data_fixr/)  |
-| Meta   | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
+| Code Coverage | [![codecov](https://codecov.io/github/UBC-MDS/data_fixr/branch/badges/graph/badge.svg?token=hNOLbmemqw)](https://codecov.io/github/UBC-MDS/data_fixr) |
+
 
 ## Package Summary
 
