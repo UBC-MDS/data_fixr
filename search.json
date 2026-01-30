@@ -147,6 +147,62 @@
     "text": "Please note that the data_fixr package is released with a Code of Conduct. By contributing to this project you agree to abide by its terms."
   },
   {
+    "objectID": "tutorial.html",
+    "href": "tutorial.html",
+    "title": "Tutorial",
+    "section": "",
+    "text": "This tutorial demonstrates an example workflow for how to use the data_fixr package to clean and analyze your data."
+  },
+  {
+    "objectID": "tutorial.html#installation",
+    "href": "tutorial.html#installation",
+    "title": "Tutorial",
+    "section": "Installation",
+    "text": "Installation\nFirst, install the package from Test PyPI:\npip install -i https://test.pypi.org/simple/ data-fixr==0.1.2"
+  },
+  {
+    "objectID": "tutorial.html#getting-started",
+    "href": "tutorial.html#getting-started",
+    "title": "Tutorial",
+    "section": "Getting Started",
+    "text": "Getting Started\nImport the functions you need:\n\nfrom data_fixr import (\n    correlation_report,\n    remove_duplicates,\n    detect_anomalies,\n    missing_values\n)\nimport pandas as pd"
+  },
+  {
+    "objectID": "tutorial.html#load-sample-data",
+    "href": "tutorial.html#load-sample-data",
+    "title": "Tutorial",
+    "section": "Load Sample Data",
+    "text": "Load Sample Data\nLet’s create a sample dataset to demonstrate the package functionality:\n\n# Create sample data with some issues\ndata = pd.DataFrame({\n    'age': [25, 30, 25, 150, 35, 30, 28, 45, 32, 29],  # 150 is an anomaly\n    'income': [50000, 60000, 50000, 70000, None, 60000, 55000, 85000, 62000, 58000], #contains missing value and duplicates\n    'years_experience': [3, 7, 3, 25, 10, 7, 5, 20, 8, 6]\n})\ndata\n\n\n\n\n\n\n\n\nage\nincome\nyears_experience\n\n\n\n\n0\n25\n50000.0\n3\n\n\n1\n30\n60000.0\n7\n\n\n2\n25\n50000.0\n3\n\n\n3\n150\n70000.0\n25\n\n\n4\n35\nNaN\n10\n\n\n5\n30\n60000.0\n7\n\n\n6\n28\n55000.0\n5\n\n\n7\n45\n85000.0\n20\n\n\n8\n32\n62000.0\n8\n\n\n9\n29\n58000.0\n6"
+  },
+  {
+    "objectID": "tutorial.html#detecting-missing-values",
+    "href": "tutorial.html#detecting-missing-values",
+    "title": "Tutorial",
+    "section": "Detecting Missing Values",
+    "text": "Detecting Missing Values\nCheck for missing values in the data and fill them in with method: ‘mode’ To see alternative method values, navigate to the reference page.\n\nmissing_report = missing_values(data, method='mode')\nmissing_report\n\n(   age   income  years_experience\n 0   25  50000.0                 3\n 1   30  60000.0                 7\n 2   25  50000.0                 3\n 3  150  70000.0                25\n 4   35  50000.0                10\n 5   30  60000.0                 7\n 6   28  55000.0                 5\n 7   45  85000.0                20\n 8   32  62000.0                 8\n 9   29  58000.0                 6,\n np.float64(3.3333333333333335))\n\n\nAs well as filling in the missing values with the specified method, the function also returns a column with the percentage of total DataFrame values that were originally missing and have been filled."
+  },
+  {
+    "objectID": "tutorial.html#removing-duplicates",
+    "href": "tutorial.html#removing-duplicates",
+    "title": "Tutorial",
+    "section": "Removing Duplicates",
+    "text": "Removing Duplicates\nIdentify and remove duplicate rows, keeping the first instance of the duplicated observation:\n\nclean_data = remove_duplicates(data, keep='first', report=True)\nclean_data\n\n(   age   income  years_experience\n 0   25  50000.0                 3\n 1   30  60000.0                 7\n 3  150  70000.0                25\n 4   35      NaN                10\n 6   28  55000.0                 5\n 7   45  85000.0                20\n 8   32  62000.0                 8\n 9   29  58000.0                 6,\n {'total_rows': 10,\n  'duplicate_rows': 2,\n  'rows_removed': 2,\n  'strategy': 'first',\n  'cols_used': None})\n\n\nAs well as removing the duplicated observation, the function also produces a report of the the number of duplicates detected, number of rows removed, strategy used etc. To see full details of the report parameter feature, see the reference page."
+  },
+  {
+    "objectID": "tutorial.html#detecting-anomalies",
+    "href": "tutorial.html#detecting-anomalies",
+    "title": "Tutorial",
+    "section": "Detecting Anomalies",
+    "text": "Detecting Anomalies\nFind outliers or anomalous values with default zscore method in the age and years experience columns:\n\nanomalies = detect_anomalies(data[['age', 'years_experience']])\nanomalies\n\n(   age  years_experience  age_outlier  years_experience_outlier\n 0   25                 3        False                     False\n 1   30                 7        False                     False\n 2   25                 3        False                     False\n 3  150                25         True                      True\n 4   35                10        False                     False\n 5   30                 7        False                     False\n 6   28                 5        False                     False\n 7   45                20        False                     False\n 8   32                 8        False                     False\n 9   29                 6        False                     False,\n np.float64(10.0))\n\n\nThe result returned is a tuple of a dataframe summarizing which obervations are outliers using boolean (True/False) column, along with an outlier percnetage score across all numeric columns.\nNote: We exclude the income column here because it contains missing values. The detect_anomalies function requires complete data for anomaly detection. You can handle missing values first using the missing_values function.\nThe function can also use the ‘iqr’ method for detecting anomalies, see reference page for more information."
+  },
+  {
+    "objectID": "tutorial.html#correlation-analysis",
+    "href": "tutorial.html#correlation-analysis",
+    "title": "Tutorial",
+    "section": "Correlation Analysis",
+    "text": "Correlation Analysis\nGenerate a correlation report showing pairwise correlations between all numeric variables in the data using the pearson correlation method:\n\ncorr_report = correlation_report(data, method='spearman')\ncorr_report\n\n\n\n\n\n\n\n\nfeature_1\nfeature_2\ncorrelation\nabs_correlation\n\n\n\n\n0\nage\nincome\n0.983051\n0.983051\n\n\n1\nage\nyears_experience\n1.000000\n1.000000\n\n\n2\nincome\nyears_experience\n0.983051\n0.983051\n\n\n\n\n\n\n\nEach row in the returned report represents the correlation value for each unique pair of numeric features. An absolute correlation value is also computed. Navigate to the reference page to explore alternative values for the method parameter."
+  },
+  {
     "objectID": "CHANGELOG.html",
     "href": "CHANGELOG.html",
     "title": "Changelog",
