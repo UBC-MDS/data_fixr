@@ -46,7 +46,7 @@ corr_report = correlation_report(data, method='spearman')
 
 ```
 
-To view an end-to-end example workflow, refer to the [tutorial](https://ubc-mds.github.io/data_fixr/tutorial.html) page of the documentation.
+Note: To view an end-to-end example workflow, refer to the [tutorial](https://ubc-mds.github.io/data_fixr/tutorial.html) page of the documentation.
 
 ## Installation
 
