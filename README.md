@@ -95,13 +95,6 @@ This function identifies and flags outliers in numeric columns of a pandas DataF
 - `missing_values`:
 This function fills missing values (NaN) in both numeric and categorical (non-numeric) columns of a pandas DataFrame. Numeric columns are filled using a user-specified method (mean, median, or mode), while categorical (non-numeric) columns are automatically filled using mode imputation. The function returns a DataFrame with missing values filled and the overall percentage of missing values that were imputed across all columns.
 
-## Position in Python Environment
-
-The functionality provided by **data_fixr** overlaps partially with capabilities available in established Python data analysis libraries, most notably [pandas](https://pandas.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/). Pandas provides low-level methods for computing correlations between numeric variables and for removing duplicate rows, while scikit-learn and related libraries offer utilities for identifying outliers as part of preprocessing or feature selection workflows. However, these tools typically expose such functionality as individual operations without producing standardized, diagnostics-oriented summaries. 
-
-
-In particular, while duplicate removal and missing-value imputation functionality already exist in pandas, the corresponding functions in data_fixr extend this behavior by optionally returning structured summary information. The duplicate removal function can return a summary report describing how many duplicate rows were detected and removed, while the missing-value filling function reports the overall percentage of missing values that were imputed across the dataset. Additionally, automated exploratory data analysis tools such as [ydata-profiling](https://ydata.ai/) focus on generating comprehensive visual or HTML reports, whereas data_fixr emphasizes lightweight, modular functions that return machine-readable outputs intended for exploratory diagnostics, reproducible preprocessing pipelines, and downstream machine learning workflows.
-
 ## Development and Testing
 
 To contribute, run the tests, or build documentation, follow the steps below.
@@ -158,6 +151,12 @@ If you have opted to use the conda environment, deactivate the environment once 
 ```bash
 $ conda deactivate
 ```
+
+## Position in Python Environment
+
+The functionality provided by **data_fixr** overlaps partially with capabilities available in established Python data analysis libraries, most notably [pandas](https://pandas.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/). Pandas provides low-level methods for computing correlations between numeric variables and for removing duplicate rows, while scikit-learn and related libraries offer utilities for identifying outliers as part of preprocessing or feature selection workflows. However, these tools typically expose such functionality as individual operations without producing standardized, diagnostics-oriented summaries. 
+
+In particular, while duplicate removal and missing-value imputation functionality already exist in pandas, the corresponding functions in data_fixr extend this behavior by optionally returning structured summary information. The duplicate removal function can return a summary report describing how many duplicate rows were detected and removed, while the missing-value filling function reports the overall percentage of missing values that were imputed across the dataset. Additionally, automated exploratory data analysis tools such as [ydata-profiling](https://ydata.ai/) focus on generating comprehensive visual or HTML reports, whereas data_fixr emphasizes lightweight, modular functions that return machine-readable outputs intended for exploratory diagnostics, reproducible preprocessing pipelines, and downstream machine learning workflows.
 
 ## Requirements
 - Python ≥ 3.10
