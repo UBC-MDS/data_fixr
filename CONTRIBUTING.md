@@ -116,14 +116,14 @@ Before you submit a pull request, check that it meets these guidelines:
 3. Your pull request will automatically be checked by the full test suite.
    It needs to pass all of them before it can be considered for merging.
 
-# Project Retrospective
+## Project Retrospective
 
 Here we present a retrospective analysis of the *data_fixr* project, developed as part of **2025–26 DSCI-524 Group 3**.  
 The goal of this retrospective is to reflect on our planning accuracy, workflow organization, tooling decisions, and collaboration practices, using evidence collected from GitHub Projects across all four milestones.
 
 ---
 
-## Evidence Used
+### Evidence Used
 
 This retrospective is grounded in data from the following GitHub Project views and insights:
 
@@ -135,7 +135,7 @@ These views were used to assess scope evolution, bottlenecks, and contribution b
 
 ---
 
-## Milestone Progress and Planning Accuracy
+### Milestone Progress and Planning Accuracy
 
 Using the **Milestone Progress** view, we observed that workload was the most during Milestone 2.
 
@@ -149,7 +149,7 @@ Infrastructure-related tasks, particularly CI/CD and documentation deployment, w
 
 ---
 
-## Workflow and Bottlenecks
+### Workflow and Bottlenecks
 
 The **Burn-up / Completion Chart** revealed temporary bottlenecks during Milestone 3.
 
@@ -160,7 +160,7 @@ CI/CD setup became the primary bottleneck, delaying dependent tasks. Earlier exp
 
 ---
 
-## Team Contributions and Bus Factor
+### Team Contributions and Bus Factor
 
 The **Team Workload** view showed a generally balanced distribution of completed issues across team members.
 
@@ -173,7 +173,7 @@ While issue counts were not perfectly uniform, the overall workload was balanced
 
 ---
 
-## Retrospective Summary (DAKI)
+### Retrospective Summary (DAKI)
 
 ### Drop
 - Using Slack for communication issues rather than Github issues.
@@ -194,7 +194,7 @@ While issue counts were not perfectly uniform, the overall workload was balanced
 
 ---
 
-## Tools, Infrastructure, and Scaling Considerations
+### Tools, Infrastructure, and Scaling Considerations
 
 Throughout the project, we applied several development tools and practices introduced in this course, including GitHub Actions for testing and deployment, GitHub Projects for task tracking, and structured branching workflows.
 
@@ -205,14 +205,6 @@ If this project were to be scaled up or extended (e.g., as a capstone project), 
 - Distribute infrastructure knowledge more evenly across the team.
 
 These improvements would enhance maintainability, reliability, and collaboration efficiency as project complexity grows.
-
----
-
-## Conclusion
-
-This retrospective highlights the importance of accurate planning for infrastructure-heavy tasks, early automation prototyping, and evidence-based reflection using project tracking data.  
-The practices adopted during *data_fixr* provide a strong foundation for more complex, collaborative projects in the future.
-
 
 ## Code of Conduct
 
