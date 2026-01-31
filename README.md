@@ -9,6 +9,10 @@
 
 data_fixr is a lightweight Python package designed to support exploratory data analysis and early-stage data cleaning for tabular datasets. The package provides standardized, machine-readable diagnostics and cleaning utilities that help users quickly assess data quality, identify common issues, and prepare datasets for downstream analysis or machine learning workflows. Rather than generating plots or reports, data_fixr focuses on returning clean, structured outputs that can be easily tested, logged, or integrated into automated pipelines.
 
+## Documentation
+
+To view usage examples and function details, refer to the reference page of the [documentation](https://ubc-mds.github.io/data_fixr/reference/).
+
 ### Example Use Case
 
 A common early-stage data analysis workflow involves checking for correlations, missing values, duplicates, and anomalies before modeling. data_fixr allows these checks to be performed with minimal code and consistent outputs:
@@ -34,20 +38,13 @@ missing_report = missing_values(data, method='mode')
 # Identify and remove duplicate rows, keeping the first instance of the duplicated observation
 clean_data = remove_duplicates(data, keep='first', report=True)
 
-# Identify and remove duplicate rows, keeping the first instance of the duplicated observation
-clean_data = remove_duplicates(data, keep='first', report=True)
-
 # Find outliers or anomalous values with default zscore method in the age and years experience columns
 anomalies = detect_anomalies(data[['age', 'years_experience']])
 
-# Generate a correlation report showing pairwise correlations between all numeric variables in the data using the pearson correlation method:
+# Generate a correlation report showing pairwise correlations between all numeric variables in the data using the spearman correlation method:
 corr_report = correlation_report(data, method='spearman')
 
 ```
-
-## Documentation
-
-To view usage examples and function details, refer to the reference page of the [documentation](https://ubc-mds.github.io/data_fixr/reference/).
 
 ## Installation
 
@@ -72,6 +69,8 @@ If you already have data_fixr installed and want to upgrade to the newest availa
 ```bash
 pip install --upgrade -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ data-fixr
 ```
+
+### Verfify installation via python interpreter
 
 ```python
 from data_fixr import (
