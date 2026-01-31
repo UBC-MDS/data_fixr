@@ -31,3 +31,66 @@ Infrastructure-related tasks, particularly CI/CD and documentation deployment, w
 
 ---
 
+## Workflow and Bottlenecks
+
+The **Burn-up / Completion Chart** revealed temporary bottlenecks during Milestone 3.
+
+- Several issues accumulated in the *In Progress* and *Review* states while CI/CD workflows were being debugged.
+
+**Reflection:**  
+CI/CD setup became the primary bottleneck, delaying dependent tasks. Earlier experimentation with deployment workflows could have reduced friction later in the project. Distribution of Tasks was even in Milestone 3 aswell but that was just the nature of the tasks.
+
+---
+
+## Team Contributions and Bus Factor
+
+The **Team Workload** view showed a generally balanced distribution of completed issues across team members.
+
+- Some contributors had fewer issues assigned but worked on higher-complexity tasks, such as CI/CD workflows and deployment previews.
+- Milestone 3 caused disparity in the distribution of tasks which showed some members to have lower amount of tasks than others.
+- Other contributors handled multiple smaller issues related to documentation and testing.
+
+**Reflection:**  
+While issue counts were not perfectly uniform, the overall workload was balanced when task complexity was considered.
+
+---
+
+## Retrospective Summary (DAKI)
+
+### Drop
+- Using Slack for communication issues rather than Github issues.
+
+### Add
+- Earlier CI/CD prototyping during the project timeline.
+- Posting documentation preview links directly in pull request comments.
+- Clearer pull request templates to standardize reviews.
+
+### Keep
+- Issue-based task ownership with clear assignees.
+- Writing unit tests alongside function implementations.
+- Using GitHub Projects to track progress across milestones.
+
+### Improve
+- Milestone scoping to better account for infrastructure and automation complexity.
+- Cross-training team members on CI/CD workflows to reduce bus-factor risk.
+
+---
+
+## Tools, Infrastructure, and Scaling Considerations
+
+Throughout the project, we applied several development tools and practices introduced in this course, including GitHub Actions for testing and deployment, GitHub Projects for task tracking, and structured branching workflows.
+
+If this project were to be scaled up or extended (e.g., as a capstone project), we would:
+- Introduce additional CI checks such as linting and formatting enforcement.
+- Apply stricter branch protection rules earlier.
+- Expand documentation automation and preview tooling.
+- Distribute infrastructure knowledge more evenly across the team.
+
+These improvements would enhance maintainability, reliability, and collaboration efficiency as project complexity grows.
+
+---
+
+## Conclusion
+
+This retrospective highlights the importance of accurate planning for infrastructure-heavy tasks, early automation prototyping, and evidence-based reflection using project tracking data.  
+The practices adopted during *data_fixr* provide a strong foundation for more complex, collaborative projects in the future.

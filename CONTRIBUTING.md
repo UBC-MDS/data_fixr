@@ -116,52 +116,103 @@ Before you submit a pull request, check that it meets these guidelines:
 3. Your pull request will automatically be checked by the full test suite.
    It needs to pass all of them before it can be considered for merging.
 
-## Retrospective
+# Project Retrospective
 
-In every project, whether successful or challenging, looking back and analyzing how the work unfolded is critical for continuous improvement. In agile software development, this practice is known as a **retrospective**.
-
-This project encourages structured retrospectives at the end of major milestones to reflect on planning accuracy, tooling, collaboration practices, and workflow bottlenecks, with a focus on actionable improvements for future work.
-
-### Retrospective Framework (DAKI)
-
-For retrospectives, we recommend using the **DAKI** framework:
-
-- **Drop**: Practices, tools, or workflows that did not work well and should be discontinued.
-- **Add**: New practices, tools, or processes that should be introduced in future work.
-- **Keep**: Practices that worked well and should be continued.
-- **Improve**: Existing practices that were helpful but need refinement.
-
-This framework helps keep reflections concise, structured, and actionable.
+Here we present a retrospective analysis of the *data_fixr* project, developed as part of **2025–26 DSCI-524 Group 3**.  
+The goal of this retrospective is to reflect on our planning accuracy, workflow organization, tooling decisions, and collaboration practices, using evidence collected from GitHub Projects across all four milestones.
 
 ---
 
-### Creating GitHub Project Views to Support Retrospectives
+## Evidence Used
 
-Retrospectives should be grounded in evidence from the project’s GitHub tracking data. Before analysis, ensure good **data hygiene** in the GitHub Project board.
+This retrospective is grounded in data from the following GitHub Project views and insights:
 
-#### Data Hygiene Checklist
+- **Milestone Progress** (Table view grouped by milestone)
+- **Burn-up / Completion Chart** (Insights view grouped by milestone and status)
+- **Team Workload** (Table view grouped by assignee, filtered to completed tasks)
 
-- **Status Check**: All completed tasks are moved to the `Done` column.
-- **Attribution**: Every issue has an assigned contributor.
-- **Clarity**: Tasks are appropriately split or cross-linked if necessary.
-- **Timeline**: Every issue is assigned to a milestone (M1, M2, M3, M4).
-
-Bulk-editing in the Table view is encouraged to correct metadata efficiently.
+These views were used to assess scope evolution, bottlenecks, and contribution balance.
 
 ---
 
-### Analytical Views
+## Milestone Progress and Planning Accuracy
 
-#### Milestone Progress (Velocity)
+Using the **Milestone Progress** view, we observed that workload was the most during Milestone 2.
 
-To assess how project scope evolved over time we created a view to assess our milestone progress.
+- **Milestone 1** primarily focused on project setup, writing function documentations, and scaffolding. (Count of Items: 13)
+- **Milestone 2** introduced function implementations and unit testing, with a moderate increase in issue count. (Count of Items: 17)
+- **Milestone 3** showed a moderate amount of issues related to CI/CD configuration, documentation builds, and deployment previews. (Count of Items: 13)
+- **Milestone 4** had fewer issues overall, but required higher coordination and review effort.
 
-This view helps answer questions such as:
-- How did the scope change from one milestone to the next?
-   
-- Were later milestones more work-intensive than expected?
+**Reflection:**  
+Infrastructure-related tasks, particularly CI/CD and documentation deployment, were underestimated during early planning. While core function development proceeded smoothly, automation and deployment required more iterative debugging than anticipated.
 
 ---
+
+## Workflow and Bottlenecks
+
+The **Burn-up / Completion Chart** revealed temporary bottlenecks during Milestone 3.
+
+- Several issues accumulated in the *In Progress* and *Review* states while CI/CD workflows were being debugged.
+
+**Reflection:**  
+CI/CD setup became the primary bottleneck, delaying dependent tasks. Earlier experimentation with deployment workflows could have reduced friction later in the project. Distribution of Tasks was even in Milestone 3 aswell but that was just the nature of the tasks.
+
+---
+
+## Team Contributions and Bus Factor
+
+The **Team Workload** view showed a generally balanced distribution of completed issues across team members.
+
+- Some contributors had fewer issues assigned but worked on higher-complexity tasks, such as CI/CD workflows and deployment previews.
+- Milestone 3 caused disparity in the distribution of tasks which showed some members to have lower amount of tasks than others.
+- Other contributors handled multiple smaller issues related to documentation and testing.
+
+**Reflection:**  
+While issue counts were not perfectly uniform, the overall workload was balanced when task complexity was considered.
+
+---
+
+## Retrospective Summary (DAKI)
+
+### Drop
+- Using Slack for communication issues rather than Github issues.
+
+### Add
+- Earlier CI/CD prototyping during the project timeline.
+- Posting documentation preview links directly in pull request comments.
+- Clearer pull request templates to standardize reviews.
+
+### Keep
+- Issue-based task ownership with clear assignees.
+- Writing unit tests alongside function implementations.
+- Using GitHub Projects to track progress across milestones.
+
+### Improve
+- Milestone scoping to better account for infrastructure and automation complexity.
+- Cross-training team members on CI/CD workflows to reduce bus-factor risk.
+
+---
+
+## Tools, Infrastructure, and Scaling Considerations
+
+Throughout the project, we applied several development tools and practices introduced in this course, including GitHub Actions for testing and deployment, GitHub Projects for task tracking, and structured branching workflows.
+
+If this project were to be scaled up or extended (e.g., as a capstone project), we would:
+- Introduce additional CI checks such as linting and formatting enforcement.
+- Apply stricter branch protection rules earlier.
+- Expand documentation automation and preview tooling.
+- Distribute infrastructure knowledge more evenly across the team.
+
+These improvements would enhance maintainability, reliability, and collaboration efficiency as project complexity grows.
+
+---
+
+## Conclusion
+
+This retrospective highlights the importance of accurate planning for infrastructure-heavy tasks, early automation prototyping, and evidence-based reflection using project tracking data.  
+The practices adopted during *data_fixr* provide a strong foundation for more complex, collaborative projects in the future.
+
 
 ## Code of Conduct
 
