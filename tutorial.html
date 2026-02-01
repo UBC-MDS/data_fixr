@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <p>Import the functions you need:</p>
-<div id="1174fd26" class="cell" data-execution_count="1">
+<div id="25532ff1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> data_fixr <span class="im">import</span> (</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    correlation_report,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    remove_duplicates,</span>
@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="load-sample-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-sample-data">Load Sample Data</h2>
 <p>Let’s create a sample dataset to demonstrate the package functionality:</p>
-<div id="0e4101ca" class="cell" data-execution_count="2">
+<div id="11afd2a5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample data with some issues</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'age'</span>: [<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">150</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">28</span>, <span class="dv">45</span>, <span class="dv">32</span>, <span class="dv">29</span>],  <span class="co"># 150 is an anomaly</span></span>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="detecting-missing-values" class="level2">
 <h2 class="anchored" data-anchor-id="detecting-missing-values">Detecting Missing Values</h2>
 <p>Check for missing values in the data and fill them in with method: ‘mode’ To see alternative method values, navigate to the <a href="https://ubc-mds.github.io/data_fixr/reference/">reference</a> page.</p>
-<div id="1cfdf0a1" class="cell" data-execution_count="3">
+<div id="33d83816" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>missing_report <span class="op">=</span> missing_values(data, method<span class="op">=</span><span class="st">'mode'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>missing_report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -310,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="removing-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="removing-duplicates">Removing Duplicates</h2>
 <p>Identify and remove duplicate rows, keeping the first instance of the duplicated observation:</p>
-<div id="826c7046" class="cell" data-execution_count="4">
+<div id="e5bd0cff" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="op">=</span> remove_duplicates(data, keep<span class="op">=</span><span class="st">'first'</span>, report<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clean_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -335,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="detecting-anomalies" class="level2">
 <h2 class="anchored" data-anchor-id="detecting-anomalies">Detecting Anomalies</h2>
 <p>Find outliers or anomalous values with default zscore method in the age and years experience columns:</p>
-<div id="9f987dec" class="cell" data-execution_count="5">
+<div id="98d22de6" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>anomalies <span class="op">=</span> detect_anomalies(data[[<span class="st">'age'</span>, <span class="st">'years_experience'</span>]])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>anomalies</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -360,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="correlation-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="correlation-analysis">Correlation Analysis</h2>
 <p>Generate a correlation report showing pairwise correlations between all numeric variables in the data using the pearson correlation method:</p>
-<div id="33a18d7f" class="cell" data-execution_count="6">
+<div id="52806555" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>corr_report <span class="op">=</span> correlation_report(data, method<span class="op">=</span><span class="st">'spearman'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>corr_report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
