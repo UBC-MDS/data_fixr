@@ -9,7 +9,7 @@ This tutorial demonstrates an example workflow for how to use the `data_fixr` pa
 
 First, install the package from Test PyPI:
 ```bash
-pip install -i https://test.pypi.org/simple/ data-fixr==0.1.2
+pip install -i https://test.pypi.org/simple/ data-fixr
 ```
 
 ## Getting Started
