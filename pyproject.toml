@@ -96,10 +96,7 @@ packages = ["src/data_fixr"]
 
 [tool.hatch.version]
 source = "vcs"
-raw-options = {
-    version_scheme = "no-guess-dev",
-    local_scheme = "no-local-version"
-}
+raw-options = { version_scheme = "no-guess-dev", local_scheme = "no-local-version" }
 
 [tool.hatch.build.hooks.vcs]
 version-file = "src/data_fixr/__version__.py"
