@@ -64,9 +64,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated README.md with new installation instructions [#70](https://github.com/UBC-MDS/data_fixr/pull/70)
 - Updated CHANGELOG.md to reflect Milestone 3 updates [#73](https://github.com/UBC-MDS/data_fixr/pull/73)
 
-## [3.0.0] - Milestone 4 - 2026-01-31
+## [3.0.0] - Milestone 4 - 2026-02-02
 
 ### Added
 
 - Set up Netlify and documentation preview workflow (`docs-preview.yml`) for automated docs deployment [#92](https://github.com/UBC-MDS/data_fixr/pull/92)
 - Tutorial documentation page and related docs config (`tutorial.qmd` and updated quarto config) [#98](https://github.com/UBC-MDS/data_fixr/pull/98)
+- Code coverage reporting to the GitHub `build.yml` CI workflow [#102](https://github.com/UBC-MDS/data_fixr/pull/102)
+- Default imputation method to `missing_values()` function based on peer feedback [#105](https://github.com/UBC-MDS/data_fixr/pull/105)
+
+### Changed
+
+- Restructured README.md with new examples based on peer and TA feedback [#104](https://github.com/UBC-MDS/data_fixr/pull/104)
+- Inline comments added to `missing_values()`, `correlation_report()`, `detect_anomalies()` and `remove_duplicates()` based on TA feedback [#105](https://github.com/UBC-MDS/data_fixr/pull/105), [#107](https://github.com/UBC-MDS/data_fixr/pull/107), [#110](https://github.com/UBC-MDS/data_fixr/pull/110), [#112](https://github.com/UBC-MDS/data_fixr/pull/112)
