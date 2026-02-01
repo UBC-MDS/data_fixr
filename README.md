@@ -7,7 +7,7 @@
 | Documentation | [![Render and Publish docs](https://github.com/UBC-MDS/data_fixr/actions/workflows/docs.yml/badge.svg)](https://github.com/UBC-MDS/data_fixr/actions/workflows/docs.yml) |
 | Deploy | [![publish-test-pypi](https://github.com/UBC-MDS/data_fixr/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/data_fixr/actions/workflows/deploy.yml) |
 | Python | [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/) |
-| Test PyPI | [![TestPyPI](https://img.shields.io/pypi/v/data-fixr?registry=testpypi&label=TestPyPI)](https://test.pypi.org/project/data-fixr/) |
+| Test PyPI | [![TestPyPI](https://img.shields.io/pypi/v/data_fixr?registry=testpypi&label=TestPyPI)](https://test.pypi.org/project/data-fixr/) |
 
 ## Package Summary
 
