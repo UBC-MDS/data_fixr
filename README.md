@@ -2,8 +2,11 @@
 
 |        |        |
 |--------|--------|
-| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/data_fixr.svg)](https://pypi.org/project/data_fixr/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/data_fixr.svg)](https://pypi.org/project/data_fixr/)  |
-| Meta   | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
+| Code Coverage | [![codecov](https://codecov.io/github/UBC-MDS/data_fixr/branch/badges/graph/badge.svg?token=hNOLbmemqw)](https://codecov.io/github/UBC-MDS/data_fixr) |
+| Build | [![CI workflow](https://github.com/UBC-MDS/data_fixr/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/data_fixr/actions/workflows/build.yml) |
+| Documentation | [![Render and Publish docs](https://github.com/UBC-MDS/data_fixr/actions/workflows/docs.yml/badge.svg)](https://github.com/UBC-MDS/data_fixr/actions/workflows/docs.yml) |
+| Deploy | [![publish-test-pypi](https://github.com/UBC-MDS/data_fixr/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/data_fixr/actions/workflows/deploy.yml) |
+| Python | [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/) |
 
 ## Package Summary
 
