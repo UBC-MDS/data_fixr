@@ -64,24 +64,38 @@ def correlation_report(df, method: str = "pearson"):
     """
 
 
-    # Validating the Inputs
+    # Input Valdation
 
+    # Ensure input is a pandas DataFrame
     if not isinstance(df, pd.DataFrame):
         raise TypeError("df must be a pandas DataFrame.")
     
+    # Validate correlation method
     if method not in {"pearson", "spearman", "kendall"}:
         raise ValueError("method must be one of {'pearson', 'spearman', 'kendall'}.")
+    
+    # Data Preperation
 
+    # Select only numeric columns, as correlation is undefined for non-numeric data
     numeric_df = df.select_dtypes(include="number")
 
+    # Require at least two numeric columns to compute pairwise correlations
     if numeric_df.shape[1] < 2:
         raise ValueError("At least two numeric columns are required for correlation.")
     
+    # Correlation computation
+
+    # Compute the correlation matrix using the specified method    
     corr_matrix = numeric_df.corr(method=method)
 
+    # Reshape correlation matrix
+
+    # Prepare a list to store pairwise correlation records
     records = []
     cols = corr_matrix.columns
 
+    # Iterate over the upper triangle of the correlation matrix
+    # This avoids self-correlations and duplicate symmetric pairs
     for i in range(len(cols)):
         for j in range(i + 1, len(cols)):
             corr_value = corr_matrix.iloc[i, j]
@@ -92,7 +106,7 @@ def correlation_report(df, method: str = "pearson"):
                 "abs_correlation": abs(corr_value),
             })
 
-
+    # Convert the collected records into a long-format DataFrame
     result = pd.DataFrame.from_records(records,columns=["feature_1", "feature_2", "correlation", "abs_correlation"],)
-
+    # Return the correlation report
     return result
