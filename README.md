@@ -3,7 +3,9 @@
 |        |        |
 |--------|--------|
 | Code Coverage | [![codecov](https://codecov.io/github/UBC-MDS/data_fixr/branch/badges/graph/badge.svg?token=hNOLbmemqw)](https://codecov.io/github/UBC-MDS/data_fixr) |
-
+| Build | [![CI workflow](https://github.com/UBC-MDS/data_fixr/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/data_fixr/actions/workflows/build.yml) |
+| Documentation | [![Render and Publish docs](https://github.com/UBC-MDS/data_fixr/actions/workflows/docs.yml/badge.svg)](https://github.com/UBC-MDS/data_fixr/actions/workflows/docs.yml) |
+| Deploy | [![publish-test-pypi](https://github.com/UBC-MDS/data_fixr/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/data_fixr/actions/workflows/deploy.yml) |
 
 ## Package Summary
 
