@@ -72,6 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tutorial documentation page and related docs config (`tutorial.qmd` and updated quarto config) [#98](https://github.com/UBC-MDS/data_fixr/pull/98)
 - Added code coverage reporting to the GitHub `build.yml` CI workflow [#102](https://github.com/UBC-MDS/data_fixr/pull/102)
 - Added automatic semantic versioning using `hatch-vcs`; version is now derived from git tags instead of being hardcoded, and updated deployment workflow to trigger on version tags [#108](https://github.com/UBC-MDS/data_fixr/pull/108)
+- Added dynamic badges for Code Coverage, CI, CD, Documentation, Test PyPI and Python version to README.md based on peer feedback [#110](https://github.com/UBC-MDS/data_fixr/pull/110)
 
 ### Changed
 
