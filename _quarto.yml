@@ -12,7 +12,7 @@ website:
         href: tutorial.qmd
       - text: "Reference"
         href: reference/index.qmd
-      - text: "Infrastructure & Workflow"
+      - text: "Tool, Infrastructure & Workflow"
         href: retrospective.qmd
 
 # tell quarto to read the generated sidebar
