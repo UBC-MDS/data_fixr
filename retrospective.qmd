@@ -1,12 +1,11 @@
 ---
-title: "Retrospective "
+title: "Retrospective"
+subtitle: "Development Practices and Team Reflection"
 jupyter: python3
 ---
 
 Here we present a retrospective analysis of the *data_fixr* project, developed as part of **2025–26 DSCI-524 Group 3**.  
 The goal of this retrospective is to reflect on our planning accuracy, workflow organization, tooling decisions, and collaboration practices, using evidence collected from GitHub Projects across all four milestones.
-
----
 
 ### Evidence Used
 
