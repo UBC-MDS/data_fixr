@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <section id="data_fixr.missing_values.missing_values" class="level3">
 <h3 class="anchored" data-anchor-id="data_fixr.missing_values.missing_values">missing_values</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>missing_values.missing_values(df, method)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>missing_values.missing_values(df, method<span class="op">=</span><span class="st">'median'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This function fills missing values (NaN) in a pandas DataFrame using column-appropriate imputation strategies.</p>
 <p>This function imputes missing values in both numeric and categorical columns. Numeric columns are filled using a user-specified method (mean, median, or mode), while categorical (non-numeric) columns are automatically filled using mode imputation.</p>
 <p>Missing values can distort statistical analyses and machine learning models. This function provides common strategies for imputing missing values depending on the nature of the data distribution.</p>
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>method</td>
 <td>str</td>
 <td>The imputation method to use for numeric columns. Valid options are: - ‘mean’ : Replace NaN with column mean (suitable for symmetric data) - ‘median’ : Replace NaN with column median (robust to outliers) - ‘mode’ : Replace NaN with column mode Categorical (non-numeric) columns always use mode imputation regardless of the selected method.</td>
-<td><em>required</em></td>
+<td><code>"median"</code></td>
 </tr>
 </tbody>
 </table>
