@@ -1,6 +1,15 @@
+# This workflow publishes the package to Test PyPI using
+# tag-based versioning. It is automatically triggered when 
+# a Git tag matching v*.*.* is pushed.
+
+# Usage: 
+# 1. Merge changes into main
+# 2. Create and push a version tag (git tag v1.1.1 && git push origin v1.1.1)
+
 name: publish-test-pypi
 
 on:
+  # Trigger automatically when a version tag is pushed
   push:
     tags:
       - 'v*.*.*'
@@ -14,6 +23,7 @@ jobs:
       - name: Check-out repository
         uses: actions/checkout@v4
         with:
+          # Required for hatch-vcs to determine the version
           fetch-depth: 0
 
       - name: Set up Python
@@ -43,6 +53,7 @@ jobs:
       - name: Check-out repository
         uses: actions/checkout@v4
         with:
+          # Required so hatch-vcs can read git tags for versioning
           fetch-depth: 0
 
       - name: Set up Python
