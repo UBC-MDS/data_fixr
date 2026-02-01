@@ -85,12 +85,15 @@ def missing_values(df, method="median"):
     33.3% of values were filled.
     """
 
+    # Ensure input is actually a DataFrame
     if not isinstance(df, pd.DataFrame):
         raise TypeError("Input must be a pandas DataFrame.")
 
+    # Restrict the method parameter to only 3 supported types
     if method not in ["mean", "median", "mode"]:
         raise ValueError("Method must be one of: 'mean', 'median', 'mode'.")
 
+    # Ensure that the original DataFrame is never modified
     result_df = df.copy()
 
     if df.empty:  # Empty dataframe
@@ -113,6 +116,7 @@ def missing_values(df, method="median"):
         elif method == "median":
             fill_value = result_df[col].median()
         elif method == "mode":
+            # .mode() returns a Series because there can be mutiple modes
             mode_result = result_df[col].mode()
             fill_value = mode_result.iloc[0] if len(mode_result) > 0 else np.nan
 
@@ -123,6 +127,7 @@ def missing_values(df, method="median"):
         if result_df[col].isna().all():
             continue  # Leave all-NaN columns unchanged
 
+        # Compute the mode and extract the first value
         mode_result = result_df[col].mode()
         fill_value = mode_result.iloc[0] if len(mode_result) > 0 else np.nan
         result_df[col] = result_df[col].fillna(fill_value)
