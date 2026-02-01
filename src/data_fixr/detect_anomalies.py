@@ -124,22 +124,31 @@ def detect_anomalies(df, method='zscore'):
     # Detection of outliers in each numeric column:
     for col in numeric_cols:
         if method == "zscore":
+            # Z-score method: flag values > 2 standard deviations from mean
+            # Formula: z = (x - mean) / std
             mean = df[col].mean()
             std = df[col].std()
             z_scores = (df[col] - mean) / std
-            outliers = z_scores.abs() > 2
+            #~95% of data falls within ±2 standard deviations
+            outliers = z_scores.abs() > 2 
         
         elif method == "iqr":
+            # IQR method: flag values outside Q1 - 1.5*IQR and Q3 + 1.5*IQR
+            # This method is robust to extreme values
             Q1 = df[col].quantile(0.25)
             Q3 = df[col].quantile(0.75)
             IQR = Q3 - Q1
             lower_bound = Q1 - 1.5 * IQR
             upper_bound = Q3 + 1.5 * IQR
-            outliers = (df[col] < lower_bound) | (df[col] > upper_bound) 
+            outliers = (df[col] < lower_bound) | (df[col] > upper_bound)
             
+        # Add outlier flag column to result DataFrame with naming convention
         result_df[f"{col}_outlier"] = outliers
+        
+        # Update running counts for overall outlier percentage
         total_outliers += outliers.sum()
         total_values += len(df[col])
-    
+        
+     # Calculate overall outlier percentage across all numeric columns
     outlier_percentage = (total_outliers / total_values) * 100
     return result_df, outlier_percentage
