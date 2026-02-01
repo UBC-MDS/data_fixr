@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>detect_anomalies</title>
+<title>Retrospective</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,62 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ee47912cae73dc7932e3cc93c52697b6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ee47912cae73dc7932e3cc93c52697b6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,10 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../reference/_styles-quartodoc.css">
+<link rel="stylesheet" href="reference/_styles-quartodoc.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -121,19 +86,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../tutorial.html"> 
+    <a class="nav-link" href="./tutorial.html"> 
 <span class="menu-text">Tutorial</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
+    <a class="nav-link" href="./reference/index.html"> 
 <span class="menu-text">Reference</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../retrospective.html"> 
+    <a class="nav-link active" href="./retrospective.html" aria-current="page"> 
 <span class="menu-text">Development Practices</span></a>
   </li>  
 </ul>
@@ -142,219 +107,123 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/correlation_report.html">Some functions</a></li><li class="breadcrumb-item"><a href="../reference/detect_anomalies.html">detect_anomalies</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Function reference</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Some functions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/correlation_report.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">correlation_report</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/detect_anomalies.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">detect_anomalies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/missing_values.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">missing_values</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/remove_duplicates.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">remove_duplicates</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/correlation_report.html">Some functions</a></li><li class="breadcrumb-item"><a href="../reference/detect_anomalies.html">detect_anomalies</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Retrospective</h1>
+<p class="subtitle lead">Development Practices and Team Reflection</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="data_fixr.detect_anomalies" class="level1">
-<h1>detect_anomalies</h1>
-<p><code>detect_anomalies</code></p>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="#data_fixr.detect_anomalies.detect_anomalies">detect_anomalies</a></td>
-<td>This function flags outliers in numeric columns using either the</td>
-</tr>
-</tbody>
-</table>
-<section id="data_fixr.detect_anomalies.detect_anomalies" class="level3">
-<h3 class="anchored" data-anchor-id="data_fixr.detect_anomalies.detect_anomalies">detect_anomalies</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>detect_anomalies.detect_anomalies(df, method<span class="op">=</span><span class="st">'zscore'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This function flags outliers in numeric columns using either the Z-score method or the IQR method.</p>
-<p>Outliers in a dataset can heavily impact our analysis negatively. This function helps to identify potential anomalies in numeric columns of a pandas DataFrame, whether the data is normally distributed or skewed.</p>
-<p>The function takes in a DataFrame, automatically identifies numeric columns, and applies the specified method to flag outliers. Each numeric column is analyzed independently to detect anomalous values.</p>
-<p>The z-score method is suitable for normally distributed data but sensitive to extreme outliers, while the IQR method is better for skewed distributions and robust to extreme values.</p>
-<section id="parameters" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 81%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>df</td>
-<td>pd.DataFrame</td>
-<td>The DataFrame containing numeric columns to analyze for anomalies. Non-numeric columns will be excluded from the analysis.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td>method</td>
-<td>str</td>
-<td>The anomaly detection method to use. Valid options are: - ‘zscore’ : For normally distributed data - ‘iqr’ : For skewed data or robust detection</td>
-<td><code>'zscore'</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 1%">
-<col style="width: 7%">
-<col style="width: 91%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>tuple of (pd.DataFrame, float)</td>
-<td>result_df : pd.DataFrame A DataFrame containing only the numeric columns plus additional boolean columns (named as ’{column}_outlier’) indicating whether each value is an outlier. True indicates an outlier, False indicates a normal value. outlier_percentage : float The percentage of outliers detected across all numeric columns, calculated as (total outliers / total values) * 100.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="raises" class="level4 doc-section doc-section-raises">
-<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 87%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>ValueError</td>
-<td>If method is not ‘zscore’ or ‘iqr’, or if any numeric column contains fewer than 3 data points, or if any numeric column contains NaN values.</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>TypeError</td>
-<td>If df is not a pandas DataFrame or contains no numeric columns.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="notes" class="level4 doc-section doc-section-notes">
-<h4 class="doc-section doc-section-notes anchored" data-anchor-id="notes">Notes</h4>
-<p>Z-score method: Identifies points that are more than 2 standard deviations away from the mean. The z-score is calculated as: z = (x - mean) / std. A data point is flagged as an outlier if |z| &gt; 2.</p>
-<p>IQR method: Uses the interquartile range to identify outliers. Calculates Q1 (25th percentile) and Q3 (75th percentile), then IQR = Q3 - Q1. A data point is flagged as an outlier if it falls below Q1 - 1.5×IQR or above Q3 + 1.5×IQR.</p>
-<p>Assumptions: - Requires at least 3 data points per numeric column for meaningful analysis - Non-numeric columns are automatically excluded - Missing values (NaN) are not flagged as outliers but will raise an error if present in numeric columns.</p>
-</section>
-<section id="examples" class="level4 doc-section doc-section-examples">
-<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="co"># Create sample data with clear outliers</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>...     <span class="st">'temperature'</span>: [<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">19</span>, <span class="dv">98</span>, <span class="dv">23</span>],</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>...     <span class="st">'humidity'</span>: [<span class="dv">45</span>, <span class="dv">50</span>, <span class="dv">48</span>, <span class="dv">52</span>, <span class="dv">49</span>, <span class="dv">200</span>],</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>...     <span class="st">'location'</span>: [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>]</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>... })</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> result_df, pct <span class="op">=</span> detect_anomalies(df, method<span class="op">=</span><span class="st">'zscore'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(result_df)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>   temperature  humidity  temperature_outlier  humidity_outlier</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>           <span class="dv">20</span>        <span class="dv">45</span>                <span class="va">False</span>             <span class="va">False</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>           <span class="dv">21</span>        <span class="dv">50</span>                <span class="va">False</span>             <span class="va">False</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>           <span class="dv">22</span>        <span class="dv">48</span>                <span class="va">False</span>             <span class="va">False</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>           <span class="dv">19</span>        <span class="dv">52</span>                <span class="va">False</span>             <span class="va">False</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>           <span class="dv">98</span>        <span class="dv">49</span>                 <span class="va">True</span>             <span class="va">False</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>           <span class="dv">23</span>       <span class="dv">200</span>                <span class="va">False</span>              <span class="va">True</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>pct<span class="sc">:.1f}</span><span class="ss">% of data points are outliers"</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fl">16.7</span><span class="op">%</span> of data points are outliers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>Here we present a retrospective analysis of the <em>data_fixr</em> project, developed as part of <strong>2025–26 DSCI-524 Group 3</strong>.<br>
+The goal of this retrospective is to reflect on our planning accuracy, workflow organization, tooling decisions, and collaboration practices, using evidence collected from GitHub Projects across all four milestones.</p>
+<section id="evidence-used" class="level3">
+<h3 class="anchored" data-anchor-id="evidence-used">Evidence Used</h3>
+<p>This retrospective is grounded in data from the following GitHub Project views and insights:</p>
+<ul>
+<li><a href="https://github.com/orgs/UBC-MDS/projects/310/views/11"><strong>Milestone Progress</strong></a> (Table view grouped by milestone)</li>
+<li><a href="https://github.com/orgs/UBC-MDS/projects/310/insights/3"><strong>Burn-up / Completion Chart</strong></a> (Insights view grouped by milestone and status)</li>
+<li><a href="https://github.com/orgs/UBC-MDS/projects/310/views/12"><strong>Team Workload</strong></a>(Table view grouped by assignee, filtered to completed tasks)</li>
+</ul>
+<p>These views were used to assess scope evolution, bottlenecks, and contribution balance.</p>
+<hr>
 </section>
+<section id="milestone-progress-and-planning-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-progress-and-planning-accuracy">Milestone Progress and Planning Accuracy</h3>
+<p>Using the <strong>Milestone Progress</strong> view, we observed that workload was the most during Milestone 2.</p>
+<ul>
+<li><strong>Milestone 1</strong> primarily focused on project setup, writing function documentations, and scaffolding. (Count of Items: 13)</li>
+<li><strong>Milestone 2</strong> introduced function implementations and unit testing, with a moderate increase in issue count. (Count of Items: 17)</li>
+<li><strong>Milestone 3</strong> showed a moderate amount of issues related to CI/CD configuration, documentation builds, and deployment previews. (Count of Items: 13)</li>
+<li><strong>Milestone 4</strong> had fewer issues overall, but required higher coordination and review effort.</li>
+</ul>
+<p><strong>Reflection:</strong><br>
+Infrastructure-related tasks, particularly CI/CD and documentation deployment, were underestimated during early planning. While core function development proceeded smoothly, automation and deployment required more iterative debugging than anticipated.</p>
+<hr>
 </section>
+<section id="workflow-and-bottlenecks" class="level3">
+<h3 class="anchored" data-anchor-id="workflow-and-bottlenecks">Workflow and Bottlenecks</h3>
+<p>The <strong>Burn-up / Completion Chart</strong> revealed temporary bottlenecks during Milestone 3.</p>
+<ul>
+<li>Several issues accumulated in the <em>In Progress</em> and <em>Review</em> states while CI/CD workflows were being debugged.</li>
+</ul>
+<p><strong>Reflection:</strong><br>
+CI/CD setup became the primary bottleneck, delaying dependent tasks. Earlier experimentation with deployment workflows could have reduced friction later in the project. Distribution of Tasks was even in Milestone 3 aswell but that was just the nature of the tasks.</p>
+<hr>
 </section>
+<section id="team-contributions-and-bus-factor" class="level3">
+<h3 class="anchored" data-anchor-id="team-contributions-and-bus-factor">Team Contributions and Bus Factor</h3>
+<p>The <strong>Team Workload</strong> view showed a generally balanced distribution of completed issues across team members.</p>
+<ul>
+<li>Some contributors had fewer issues assigned but worked on higher-complexity tasks, such as CI/CD workflows and deployment previews.</li>
+<li>Milestone 3 caused disparity in the distribution of tasks which showed some members to have lower amount of tasks than others.</li>
+<li>Other contributors handled multiple smaller issues related to documentation and testing.</li>
+</ul>
+<p><strong>Reflection:</strong><br>
+While issue counts were not perfectly uniform, the overall workload was balanced when task complexity was considered.</p>
+<hr>
+</section>
+<section id="retrospective-summary-daki" class="level3">
+<h3 class="anchored" data-anchor-id="retrospective-summary-daki">Retrospective Summary (DAKI)</h3>
+</section>
+<section id="drop" class="level3">
+<h3 class="anchored" data-anchor-id="drop">Drop</h3>
+<ul>
+<li>Using Slack for communication issues rather than Github issues.</li>
+</ul>
+</section>
+<section id="add" class="level3">
+<h3 class="anchored" data-anchor-id="add">Add</h3>
+<ul>
+<li>Earlier CI/CD prototyping during the project timeline.</li>
+<li>Posting documentation preview links directly in pull request comments.</li>
+<li>Clearer pull request templates to standardize reviews.</li>
+</ul>
+</section>
+<section id="keep" class="level3">
+<h3 class="anchored" data-anchor-id="keep">Keep</h3>
+<ul>
+<li>Issue-based task ownership with clear assignees.</li>
+<li>Writing unit tests alongside function implementations.</li>
+<li>Using GitHub Projects to track progress across milestones.</li>
+</ul>
+</section>
+<section id="improve" class="level3">
+<h3 class="anchored" data-anchor-id="improve">Improve</h3>
+<ul>
+<li>Milestone scoping to better account for infrastructure and automation complexity.</li>
+<li>Cross-training team members on CI/CD workflows to reduce bus-factor risk.</li>
+</ul>
+<hr>
+</section>
+<section id="tools-infrastructure-and-scaling-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="tools-infrastructure-and-scaling-considerations">Tools, Infrastructure, and Scaling Considerations</h3>
+<p>Throughout the project, we applied several development tools and practices introduced in this course, including GitHub Actions for testing and deployment, GitHub Projects for task tracking, and structured branching workflows.</p>
+<p>If this project were to be scaled up or extended (e.g., as a capstone project), we would: - Introduce additional CI checks such as linting and formatting enforcement. - Apply stricter branch protection rules earlier. - Expand documentation automation and preview tooling. - Distribute infrastructure knowledge more evenly across the team.</p>
+<p>These improvements would enhance maintainability, reliability, and collaboration efficiency as project complexity grows.</p>
+
+
 </section>
 
 </main> <!-- /main -->
