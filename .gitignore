@@ -251,3 +251,6 @@ _site/
 **/*.quarto_ipynb
 
 .quarto/
+
+# Hatch version file
+src/data_fixr/__version__.py
