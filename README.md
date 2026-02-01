@@ -18,8 +18,6 @@ To view usage examples and function details, refer to the reference page of the 
 A common early-stage data analysis workflow involves checking for correlations, missing values, duplicates, and anomalies before modeling. data_fixr allows these checks to be performed with minimal code and consistent outputs:
 
 ```python
-
-# Verify installation via python interpreter
 from data_fixr import (
     correlation_report,
     remove_duplicates,
@@ -27,6 +25,7 @@ from data_fixr import (
     missing_values
 )
 import pandas as pd
+# Note: Above code can also be used to verify installation via python interpreter
 
 data = pd.DataFrame({
     'age': [25, 30, 25, 150, 35, 30, 28, 45, 32, 29],  # 150 is an anomaly
