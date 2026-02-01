@@ -18,6 +18,8 @@ To view usage examples and function details, refer to the reference page of the 
 A common early-stage data analysis workflow involves checking for correlations, missing values, duplicates, and anomalies before modeling. data_fixr allows these checks to be performed with minimal code and consistent outputs:
 
 ```python
+
+# Verify installation via python interpreter
 from data_fixr import (
     correlation_report,
     remove_duplicates,
@@ -70,17 +72,6 @@ If you already have data_fixr installed and want to upgrade to the newest availa
 
 ```bash
 pip install --upgrade -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ data-fixr
-```
-
-### Verfify installation via python interpreter
-
-```python
-from data_fixr import (
-    correlation_report,
-    remove_duplicates,
-    detect_anomalies,
-    missing_values
-)
 ```
 
 ## Functions
